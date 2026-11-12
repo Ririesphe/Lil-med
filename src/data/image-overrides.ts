@@ -25,7 +25,7 @@ export const productImageOverrides: Record<string, string> = {
   "141": publicImage("/generated/pcl-microscope-slides.jpg"),
   "144": publicImage("/products/Counting Chamber Slides.jpg"),
   "145": publicImage("/products/Latex Glass Slides.jpg"),
-  "146": batchOne("12_75mm Test Tube, 5ml pp_ps.jpg"),
+  "146": publicImage("/imgs/image8.png"), // 12 × 75 mm Test Tube
   "147": batchOne("16_53mm Test Tube, 6ml with Cap.jpg"),
   "148": batchOne("25ul Transfer Pipette .jpg"),
   "149": batchOne("3M FACE MASK 1860 N95 PARTICULATE RESPIRATOR.jpg"),

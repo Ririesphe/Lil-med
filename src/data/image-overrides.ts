@@ -8,6 +8,8 @@ const publicImage = (path: string) => encodeURI(path);
 //
 // === Word Document No.2 image overrides (27 products) ===
 // These use the actual extracted PNG images from the attached Word document.
+// #9 Cell Culture Cover Glass keeps its catalogue photo: the Word document only
+// reuses the microscope-slide picture for it, which does not show cover glass.
 export const productImageOverrides: Record<string, string> = {
   "3": publicImage("/generated/laboratory-glass-bottles.jpg"),
   "18": publicImage("/Supplies/-20_25C FREEZER (Economic Type).webp"),
@@ -23,14 +25,14 @@ export const productImageOverrides: Record<string, string> = {
   "84": publicImage("/generated/air-water-syringe.webp"),
   "108": publicImage("/generated/micro-insert-300ul-flat.webp"),
   "109": publicImage("/generated/vial-insert-250ul-conical.webp"),
-  "112": publicImage("/products/150 µL 8mm Conical Bottom Vial Insert.jpg"),
+  "112": publicImage("/products/150 ╬╝L 8mm Conical Bottom Vial Insert.jpg"),
 
-  // ──── Word Doc overrides (27 products from Website_Document_No.2.docx) ────
-  "124": publicImage("/imgs/image15.png"),  // 9. Cell Culture Cover Glass
+  // ──── Word Doc overrides (Website_Document_No.2.docx; #19, #26 and #1/#20 further down) ────
   "125": publicImage("/imgs/image19.png"),  // 10. Cell Spreaders
   "128": publicImage("/imgs/image18.png"),  // 12. Culture Tubes with Dual-position Cap
   "130": publicImage("/imgs/image17.png"),  // 11. Bacteriological Petri Dishes
   "140": publicImage("/imgs/image15.png"),  // 13. Plain Microscope Slides (same pic in Word doc)
+  "142": publicImage("/imgs/image15.png"),  // 14. PapSmear Microscope Slides (same pic in Word doc)
   "141": publicImage("/generated/pcl-microscope-slides.jpg"),
   "144": publicImage("/imgs/image20.png"),  // 15. Counting Chamber Slides
   "145": publicImage("/products/Latex Glass Slides.jpg"),
@@ -38,9 +40,9 @@ export const productImageOverrides: Record<string, string> = {
   "151": publicImage("/imgs/image21.png"),  // 16. adhesive Tape 2.5cm x 10cm
   "153": publicImage("/imgs/image22.png"),  // 17. Blood Collection Tube Holder
   "161": publicImage("/imgs/image23.png"),  // 18. Cytology Brushes
-  "164": publicImage("/imgs/image15.png"),  // 14. Pap Smear Microscope Slide (same pic in Word doc)
-  "165": publicImage("/imgs/image24.png"),  // 19. Disposable Vacuum Blood Collection Tubes
-  "171": publicImage("/imgs/image25.png"),  // 20. Gauze Swabs
+  "164": batchOne("Disposable Pap Smear Kit.png"),
+  "165": batchOne("Disposable Vacuum Blood Collection Tube (EDTA Tube) .jpg"),
+  "171": batchOne("GAUZE SWAB GREEN 100X100 (100_Pkt).jpg"),
   "174": publicImage("/imgs/image1.png"),   // 21. Gloves Vinyl Latex
   "177": publicImage("/imgs/image2.png"),   // 22. Micropore Tape
   "179": publicImage("/imgs/image3.png"),   // 23. Sample Blood Collection Needles
@@ -49,15 +51,15 @@ export const productImageOverrides: Record<string, string> = {
   "194": publicImage("/imgs/image11.png"),  // 5. Sleeve Protector
   "199": publicImage("/imgs/image4.png"),   // 24. Supreme Ster and Powder Free
   "200": publicImage("/imgs/image14.png"),  // 6. Syringes (Surgi Plus Luer Slip)
-  "203": publicImage("/imgs/image8.png"),   // 1. 12×75mm Test Tube
+  "203": batchOne("Test Tube 12_75mm, PP .jpg"),
   "206": publicImage("/imgs/image13.png"),  // 7. 16×75mm Test Tube
   "213": publicImage("/imgs/image5.png"),   // 25. Transparent Surgical Tape
   "214": publicImage("/imgs/image16.png"),  // 8. Transport Swab with medium
-  "218": publicImage("/imgs/image6.png"),   // 26. Urine Container
+  "218": batchOne("Urine container 60 ml, 90 ml, 100 ml, 120 ml.jpg"),
   "221": publicImage("/imgs/image7.png"),   // 27. ESR Pipette Adaptor
 
   // ──── Remaining existing overrides (non-Word-doc products) ────
-  "146": batchOne("12_75mm Test Tube, 5ml pp_ps.jpg"),
+  "146": publicImage("/imgs/image8.png"),  // 1. 12*75mm Test Tube
   "147": batchOne("16_53mm Test Tube, 6ml with Cap.jpg"),
   "148": batchOne("25ul Transfer Pipette .jpg"),
   "150": batchOne("96 Well Tip Box for 10ul and 200ul .jpg"),
@@ -76,7 +78,7 @@ export const productImageOverrides: Record<string, string> = {
   "168": publicImage("/blood-collection/legacy/regular-tube.jpg?v=r"),
   "169": batchOne("ESR Pipettes.jpg"),
   "170": batchOne("FIRST AID BOX INCLUDING CONTENTS.jpg"),
-  "172": batchOne("GAUZE SWABS, 75X75X8 PLY, N_STERILE 100_Box.jpg"),
+  "172": publicImage("/imgs/image25.png"),  // 20. Gauze Swabs (white, 75x75 8-ply)
   "173": batchOne("Glass Test Tube .png"),
   "175": batchOne("LOOPS INNOCULATING 10UL DISPOSABLE ( 50 packs of 20 ) box_1000.jpg"),
   "176": batchOne("Micro Blood Collection Tubes .jpg"),
@@ -116,7 +118,8 @@ export const productImageOverrides: Record<string, string> = {
   "223": batchOne("Waste a Sharp Container Rotary Collector Yellow 1l 3L 5L 7L 13L .jpg"),
   "224": publicImage("/generated/clean-lab-product-kit.jpg"),
   "136": publicImage("/generated/specimen-container.jpg"),
-  "245": publicImage("/generated/vacuum-blood-tubes.webp"),
+  "245": publicImage("/imgs/image24.png"),  // 19. Disposable Vacuum Blood Collection Tubes
+  "252": publicImage("/imgs/image6.png"),  // 26. Urine Container
   "250": publicImage("/generated/specimen-container.webp"),
   "256": publicImage("/generated/blood-collection-needle.webp"),
 };

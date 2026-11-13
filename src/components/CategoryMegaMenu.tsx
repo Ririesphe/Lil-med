@@ -77,6 +77,21 @@ export default function CategoryMegaMenu({
                 >
                   {s.name}
                 </button>
+                {s.related && s.related.length > 0 && (
+                  <ul className="mt-0.5 space-y-0.5 pl-3 border-l border-brand-teal/15">
+                    {s.related.map((r) => (
+                      <li key={r.category}>
+                        <button
+                          type="button"
+                          onClick={() => handleCategoryClick(r.category)}
+                          className="text-left text-[12px] text-brand-charcoal/70 transition hover:text-brand-teal hover:translate-x-0.5 transform inline-block py-0.5"
+                        >
+                          {r.label}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>

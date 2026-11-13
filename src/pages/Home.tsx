@@ -55,7 +55,7 @@ export default function Home() {
                 />
               </span>
               <span className="mt-4 block font-display text-2xl italic text-white/90 sm:text-3xl md:text-4xl">
-                supplies that clinics, labs & dentists trust.
+                Trusted distributor of Equipment, Laboratory and healthcare products
               </span>
             </h1>
 

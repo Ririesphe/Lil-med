@@ -127,6 +127,8 @@ export function formatZAR(n: number) {
 export interface SubcategoryInfo {
   name: string;
   blurb: string;
+  /** Other top-level categories shown as links nested under this subcategory in the menus. */
+  related?: { label: string; category: string }[];
 }
 
 export const categorySubcategories: Record<string, SubcategoryInfo[]> = {
@@ -138,6 +140,15 @@ export const categorySubcategories: Record<string, SubcategoryInfo[]> = {
     {
       name: "Laboratory Bottle Consumables",
       blurb: "Gongdong bottle, vial and glassware consumables.",
+      related: [
+        { label: "Autosampler Vials", category: "Autosampler Vials & Headspace Vials" },
+        { label: "Micro Vials", category: "Micro Vials & Inserts" },
+        { label: "EPA VOA", category: "EPA VOA & TOC Vials" },
+      ],
+    },
+    {
+      name: "Laboratory Glass Consumables",
+      blurb: "Microscope slides, cover glass, counting chambers and glass test tubes.",
     },
   ],
   "Autosampler Vials & Headspace Vials": [

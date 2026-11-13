@@ -257,16 +257,27 @@ export default function Navbar() {
                         {isExpanded && subs.length > 0 && (
                           <div className="mt-2 pl-2 space-y-1 border-l-2 border-brand-teal/40">
                             {subs.map((s) => (
-                              <Link
-                                key={s.name}
-                                to={`/products?category=${encodeURIComponent(
-                                  cat.name
-                                )}&sub=${encodeURIComponent(s.name)}`}
-                                onClick={() => setOpen(false)}
-                                className="block py-1 text-[11px] text-brand-charcoal/80 hover:text-brand-teal"
-                              >
-                                • {s.name}
-                              </Link>
+                              <div key={s.name}>
+                                <Link
+                                  to={`/products?category=${encodeURIComponent(
+                                    cat.name
+                                  )}&sub=${encodeURIComponent(s.name)}`}
+                                  onClick={() => setOpen(false)}
+                                  className="block py-1 text-[11px] text-brand-charcoal/80 hover:text-brand-teal"
+                                >
+                                  • {s.name}
+                                </Link>
+                                {s.related?.map((r) => (
+                                  <Link
+                                    key={r.category}
+                                    to={`/products?category=${encodeURIComponent(r.category)}`}
+                                    onClick={() => setOpen(false)}
+                                    className="block py-0.5 pl-4 text-[11px] text-brand-charcoal/70 hover:text-brand-teal"
+                                  >
+                                    – {r.label}
+                                  </Link>
+                                ))}
+                              </div>
                             ))}
                           </div>
                         )}

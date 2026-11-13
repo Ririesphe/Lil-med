@@ -11,6 +11,27 @@ const publicImage = (path: string) => encodeURI(path);
 // #9 Cell Culture Cover Glass keeps its catalogue photo: the Word document only
 // reuses the microscope-slide picture for it, which does not show cover glass.
 export const productImageOverrides: Record<string, string> = {
+  // ──── Amended_Website_Changes_2.docx (Nov 2026): new supplied product photos ────
+  "121": publicImage("/product-photos/clear-reagent-bottle-250ml.png"), // 5. Clear Reagent Bottle 250ml
+  "A046": publicImage("/product-photos/clear-reagent-bottle-250ml.png"), // 5. Clear Reagent Bottle 250ml
+  "131": publicImage("/product-photos/inoculation-loop.png"), // 6. Inoculation Loop
+  "155": publicImage("/product-photos/capillary-blood-collection-tube.png"), // 7. Capillary Blood Collection Tube
+  "184": publicImage("/product-photos/pipette-tips-eppendorf-gilson.png"), // 8. Pipette Tips Fit For Eppendorf 10ul & Gilson
+  "178": publicImage("/product-photos/multi-function-multi-bridge-rack.png"), // 9. Multi-Function Multi Bridge Rack
+  "182": publicImage("/product-photos/pillar-like-tube-rack.png"), // 10. Pillar-Like Tube Rack
+  "193": publicImage("/product-photos/sharp-scr-03g-3gal-container.png"), // 11. Sharp SCR-03G 3Gal Container
+  "191": publicImage("/product-photos/sample-cups.png"), // 13. Sample Cups
+  "211": publicImage("/product-photos/transfer-pipettes.png"), // 14. Transfer Pipettes
+  "212": publicImage("/product-photos/transfer-pipettes.png"), // 14. Transfer Pipettes
+  "214": publicImage("/product-photos/transport-swab-with-medium.png"), // 15. Transport Swab with Medium
+  "252": publicImage("/product-photos/urine-container.png"), // 16. Urine Container
+  "219": publicImage("/product-photos/urine-test-tube.png"), // 17. Urine Test Tube
+  "220": publicImage("/product-photos/urine-transfer-device.png"), // 19. Urine Transfer Device
+  "223": publicImage("/product-photos/waste-sharp-container-yellow.png"), // 20. Waste Sharp Container Yellow
+  "185": publicImage("/product-photos/pipette-tips-eppendorf-gilson.png"), // 24. Pipette Tip Fit For Gilson 10ul, 200ul, 1000ul
+  "187": publicImage("/product-photos/pipette-tips-eppendorf-gilson.png"), // 25. Pipette Tips Gilson Yellow 200ul BX of 1000
+  "210": publicImage("/product-photos/transfer-pipettes.png"), // 26. Transfer Pipette 1ml-2ml
+  "198": publicImage("/product-photos/stick-applicator.png"), // 27. Stick Applicator Bx 1000
   "3": publicImage("/generated/laboratory-glass-bottles.jpg"),
   "18": publicImage("/Supplies/-20_25C FREEZER (Economic Type).webp"),
   "24": publicImage("/Supplies/Table Top Class B Autoclave.webp"),
@@ -47,14 +68,12 @@ export const productImageOverrides: Record<string, string> = {
   "177": publicImage("/imgs/image2.png"),   // 22. Micropore Tape
   "179": publicImage("/imgs/image3.png"),   // 23. Sample Blood Collection Needles
   "183": publicImage("/imgs/image9.png"),   // 3. Serological (Pipette)
-  "191": publicImage("/imgs/image12.png"),  // 4. Sample Cups
   "194": publicImage("/imgs/image11.png"),  // 5. Sleeve Protector
   "199": publicImage("/imgs/image4.png"),   // 24. Supreme Ster and Powder Free
   "200": publicImage("/imgs/image14.png"),  // 6. Syringes (Surgi Plus Luer Slip)
   "203": batchOne("Test Tube 12_75mm, PP .jpg"),
   "206": publicImage("/imgs/image13.png"),  // 7. 16×75mm Test Tube
   "213": publicImage("/imgs/image5.png"),   // 25. Transparent Surgical Tape
-  "214": publicImage("/imgs/image16.png"),  // 8. Transport Swab with medium
   "218": batchOne("Urine container 60 ml, 90 ml, 100 ml, 120 ml.jpg"),
   "221": publicImage("/imgs/image7.png"),   // 27. ESR Pipette Adaptor
 
@@ -65,7 +84,6 @@ export const productImageOverrides: Record<string, string> = {
   "150": batchOne("96 Well Tip Box for 10ul and 200ul .jpg"),
   "152": batchOne("ALCOHOL HAND SANITIZER (500ml).jpg"),
   "154": batchOne("BONE MARROW BIOPSY_ASPIRATION NEEDLE 10_BOX.jpg"),
-  "155": batchOne("Capillary Blood Collection Tube.jpg"),
   "156": batchOne("Cell Culture Bottle.jpg"),
   "157": batchOne("Cell Culture Dish.jpg"),
   "158": batchOne("Cell Culture Flash.png"),
@@ -82,23 +100,16 @@ export const productImageOverrides: Record<string, string> = {
   "173": batchOne("Glass Test Tube .png"),
   "175": batchOne("LOOPS INNOCULATING 10UL DISPOSABLE ( 50 packs of 20 ) box_1000.jpg"),
   "176": batchOne("Micro Blood Collection Tubes .jpg"),
-  "178": batchOne("Multi-Function Multi-Bridge Rack .jpg"),
   "180": batchOne("PACKAGING TAPE, 48mm X 50m.jpg"),
   "181": publicImage("/generated/ph-eyewash-station.jpg"),
-  "182": batchOne("Pillar-like tube rack .jpg"),
-  "184": batchOne("Pipette Tip Fit for Eppendorf 10ulπÇü200ULπÇü1000UL .jpg"),
-  "185": batchOne("Pipette Tip Fit for Gilson 10ulπÇü200ULπÇü1000UL.jpg"),
   "186": batchOne("Pipette tip.jpg"),
-  "187": batchOne("PIPETTE TIPS GILSON YELLOW 5-200UL BOX OF 1000.jpg"),
   "188": batchOne("Plastic spatula for blood smear.jpg"),
   "189": batchOne("REGULATIONS FIRST AID REFILL.jpg"),
   "190": batchOne("SAMPLE CUP PLASTIC 1ML- NESTING.jpg"),
   "192": publicImage("/blood-collection/legacy/butterfly-needle-sharp.jpg?v=r"),
-  "193": batchOne("Sharp SCR-03G 3Gal Container .jpg"),
   "195": batchOne("SLIDE TRAY PLASTIC (20 SLIDES) EA.jpg"),
   "196": batchOne("Spectrophotometer Cuvettes .jpg"),
   "197": batchOne("Stainless Steel Blood Lancet.png"),
-  "198": batchOne("STICK APPLICATOR BX 1000.jpg"),
   "201": batchOne("SWAB THROAT PLAIN 150MM X 100 Bx 1000.jpg"),
   "202": batchOne("SYRINGE 10ml   100_BOX.jpg"),
   "204": batchOne("Test Tube 15_150mm, 15ml.jpg"),
@@ -106,20 +117,13 @@ export const productImageOverrides: Record<string, string> = {
   "207": batchOne("Test Tube with Graduation, 14.7_101mm with Cap.jpg"),
   "208": batchOne("Test Tube with Pipette 16_95mm.jpg"),
   "209": batchOne("tourniquet.jpg"),
-  "210": batchOne("Transfer Pipette 1 mL - 2 mL .jpg"),
-  "211": batchOne("Transfer Pipette 1 ml - 3.5 ml.jpg"),
-  "212": batchOne("Transfer Pipette 1 mL - 5 mL.jpg"),
   "215": batchOne("Universal Container-PPMaterial.png"),
   "216": publicImage("/generated/universal-filter-tips.jpg"),
   "217": batchOne("Urine and Stool Container.png"),
-  "219": batchOne("Urine Test Tube.jpg"),
-  "220": batchOne("Urine Transfer Device for 100ml Urine Tube.jpg"),
   "222": batchOne("VAGINAL SPECULUM.png"),
-  "223": batchOne("Waste a Sharp Container Rotary Collector Yellow 1l 3L 5L 7L 13L .jpg"),
   "224": publicImage("/generated/clean-lab-product-kit.jpg"),
   "136": publicImage("/generated/specimen-container.jpg"),
   "245": publicImage("/imgs/image24.png"),  // 19. Disposable Vacuum Blood Collection Tubes
-  "252": publicImage("/imgs/image6.png"),  // 26. Urine Container
   "250": publicImage("/generated/specimen-container.webp"),
   "256": publicImage("/generated/blood-collection-needle.webp"),
 };

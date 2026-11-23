@@ -4,6 +4,7 @@ import { formatZAR } from "../../data/products";
 import { logAction } from "../../lib/audit";
 import { supabase, type DbCategory, type DbProduct } from "../../lib/supabase";
 import { buildSearchIndex, rankBySearch } from "../../lib/search";
+import ProductImage from "../../components/ProductImage";
 
 interface FormState {
   name: string;
@@ -257,7 +258,9 @@ export default function AdminProducts() {
               <tr key={p.id} className="border-t">
                 <td className="px-4 py-2">
                   {p.image_url ? (
-                    <img src={p.image_url} alt={p.name} className="h-12 w-12 rounded object-contain ring-1 ring-black/5" />
+                    <div className="flex h-12 w-12 items-center justify-center rounded bg-white ring-1 ring-black/5">
+                      <ProductImage src={p.image_url} alt={p.name} fallbackText="text-[7px]" />
+                    </div>
                   ) : (
                     <div className="h-12 w-12 rounded bg-brand-cream" />
                   )}

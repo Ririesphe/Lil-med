@@ -3,6 +3,7 @@ import { ShoppingCart, ArrowRight } from "lucide-react";
 import { productIdOf, useCart } from "../context/CartContext";
 import { formatZAR, products as LOCAL } from "../data/products";
 import { choiceGroups, describeSelection, variantGroups } from "../lib/variants";
+import ProductImage from "../components/ProductImage";
 
 export default function Cart() {
   const { items, setQty, setVariant, remove, total, clear } = useCart();
@@ -48,13 +49,9 @@ export default function Cart() {
           <div className="mt-8 divide-y divide-black/5 rounded-2xl border border-black/5 bg-white">
             {items.map((i) => (
               <div key={i.id} className="flex items-center gap-4 p-4">
-                {i.image && (
-                  <img
-                    src={i.image}
-                    alt={i.name}
-                    className="h-24 w-24 rounded-xl bg-white object-contain p-1 ring-1 ring-black/5"
-                  />
-                )}
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-white p-1 ring-1 ring-black/5 sm:h-24 sm:w-24">
+                  <ProductImage src={i.image} alt={i.name} fallbackText="text-[9px]" />
+                </div>
                 <div className="flex-1 min-w-0">
                   <div className="truncate font-semibold text-brand-navy">{i.name}</div>
                   {i.sku && <div className="text-xs text-brand-charcoal/60">SKU: {i.sku}</div>}

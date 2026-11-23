@@ -12,6 +12,7 @@ import { useLiveProducts } from "../hooks/useProducts";
 import { buildSearchIndex, rankBySearch, searchTerms } from "../lib/search";
 import AddToQuoteDialog from "../components/AddToQuoteDialog";
 import { choiceGroups, variantGroups, type VariantSelection } from "../lib/variants";
+import ProductImage from "../components/ProductImage";
 
 const ALL = "All" as const;
 
@@ -381,18 +382,11 @@ function ProductCard({ product }: { product: Product }) {
           className="relative flex h-64 items-center justify-center overflow-hidden bg-white p-3 text-left ring-1 ring-black/5"
           aria-label={`View ${product.name}`}
         >
-          {product.image ? (
-            <img
-              src={product.image}
-              alt={product.name}
-              loading="lazy"
-              className="max-h-full max-w-full object-contain drop-shadow-[0_18px_20px_rgba(11,58,111,0.14)] transition duration-500 group-hover:scale-110"
-            />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center bg-brand-cream text-brand-navy/40">
-              <span className="text-xs uppercase tracking-widest">No image</span>
-            </div>
-          )}
+          <ProductImage
+            src={product.image}
+            alt={product.name}
+            className="transition duration-500 group-hover:scale-110"
+          />
           <span className="absolute bottom-3 right-3 rounded-full bg-brand-navy/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white opacity-0 transition group-hover:opacity-100">
             View
           </span>
@@ -487,18 +481,8 @@ function ProductCard({ product }: { product: Product }) {
               </button>
             </div>
             <div className="mt-4 grid gap-6 md:grid-cols-2">
-              <div className="rounded-2xl bg-brand-cream p-4">
-                {product.image ? (
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="mx-auto max-h-[420px] object-contain"
-                  />
-                ) : (
-                  <div className="flex h-64 items-center justify-center text-brand-navy/40">
-                    No image
-                  </div>
-                )}
+              <div className="flex h-72 items-center justify-center rounded-2xl bg-brand-cream p-4 md:h-[420px]">
+                <ProductImage src={product.image} alt={product.name} loading="eager" />
               </div>
               <div>
                 <div className="text-lg font-bold text-brand-navy">

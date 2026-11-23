@@ -12,6 +12,7 @@ import { useCart } from "../context/CartContext";
 import { useLiveProducts } from "../hooks/useProducts";
 import AddToQuoteDialog from "../components/AddToQuoteDialog";
 import { choiceGroups, variantGroups, type VariantSelection } from "../lib/variants";
+import ProductImage from "../components/ProductImage";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -137,17 +138,12 @@ export default function ProductDetail() {
             transition={{ duration: 0.4 }}
             className="group flex h-[420px] items-center justify-center overflow-hidden rounded-3xl border border-black/5 bg-white p-8 shadow-sm md:h-[520px]"
           >
-            {product.image ? (
-              <img
-                src={product.image}
-                alt={product.name}
-                className="max-h-full max-w-full object-contain drop-shadow-[0_24px_28px_rgba(11,58,111,0.16)] transition duration-700 group-hover:scale-105"
-              />
-            ) : (
-              <span className="text-xs uppercase tracking-widest text-brand-navy/40">
-                No image
-              </span>
-            )}
+            <ProductImage
+              src={product.image}
+              alt={product.name}
+              loading="eager"
+              className="transition duration-700 group-hover:scale-105"
+            />
           </motion.div>
 
           <motion.div
@@ -269,14 +265,11 @@ export default function ProductDetail() {
                   className="group overflow-hidden rounded-2xl border border-black/5 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
                 >
                   <div className="flex h-44 items-center justify-center bg-white p-3">
-                    {r.image ? (
-                      <img
-                        src={r.image}
-                        alt={r.name}
-                        loading="lazy"
-                        className="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-110"
-                      />
-                    ) : null}
+                    <ProductImage
+                      src={r.image}
+                      alt={r.name}
+                      className="transition duration-500 group-hover:scale-110"
+                    />
                   </div>
                   <div className="p-3">
                     <h3 className="font-display text-sm leading-tight text-brand-navy line-clamp-2">

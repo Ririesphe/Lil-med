@@ -93,7 +93,6 @@ export const productImageOverrides: Record<string, string> = {
   "168": publicImage("/blood-collection/legacy/regular-tube.jpg?v=r"),
   "169": batchOne("ESR Pipettes.jpg"),
   "170": batchOne("FIRST AID BOX INCLUDING CONTENTS.jpg"),
-  "172": publicImage("/imgs/image25.png"),  // 20. Gauze Swabs (white, 75x75 8-ply)
   "173": batchOne("Glass Test Tube .png"),
   "175": batchOne("LOOPS INNOCULATING 10UL DISPOSABLE ( 50 packs of 20 ) box_1000.jpg"),
   "176": batchOne("Micro Blood Collection Tubes .jpg"),

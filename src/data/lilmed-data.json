@@ -4013,27 +4013,6 @@
    "productSubcategoryName": "Surgical & Medical Disposables"
   },
   {
-   "id": 172,
-   "price": "Request Quote",
-   "galleryImages": [],
-   "name": "GAUZE SWABS, 75X75X8 PLY, N/STERILE 100/Box",
-   "model": "B1-027",
-   "category": "medical-equipments",
-   "categoryName": "Medical Equipments",
-   "pdfCategory": "Surgical & Medical Disposables",
-   "sourcePdf": "LILMED.pdf",
-   "description": "GAUZE SWABS, 75X75X8 PLY, N/STERILE 100/Box for specimen collection, transport, and microbiology sampling workflows.",
-   "image": "blue-nitrile-disposable-surgical-gloves.jpg",
-   "imageFolder": "imgs",
-   "featured": false,
-   "minOrder": "1 pack",
-   "usedFor": "Healthcare, infection-control, first-aid, and clinical support workflows.",
-   "batch1Product": true,
-   "sourceCategory": "surgical",
-   "productSubcategory": "surgical-and-medical-disposables",
-   "productSubcategoryName": "Surgical & Medical Disposables"
-  },
-  {
    "id": 173,
    "price": "Request Quote",
    "galleryImages": [],

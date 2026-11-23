@@ -9,7 +9,8 @@
 //   somewhere in its searchable fields, in any order and not necessarily next
 //   to each other. A word can match:
 //     1. as a whole word        ("tube"    -> "Test Tube")
-//     2. as part of a word      ("collect" -> "Collection")
+//     2. as part of a word      ("collect" -> "Collection"); a plural
+//        search word also matches its singular ("gloves" -> "Glove")
 //     3. with a small typo      ("tueb"    -> "Tube", "micros" -> "Microcentrifuge")
 //   Typos are only tolerated in words of 4+ letters without digits, so sizes and
 //   codes ("10ml", "B1-001") must be typed correctly.
@@ -129,9 +130,22 @@ const WHOLE = 3;
 const PARTIAL = 2;
 const FUZZY = 1;
 
+/** Singular forms to try for a plural search word ("gloves" -> "glove", "dishes" -> "dish"). */
+function singulars(term: string): string[] {
+  if (term.length < 4 || /\d/.test(term) || !term.endsWith("s") || term.endsWith("ss")) return [];
+  const out = [term.slice(0, -1)];
+  if (term.endsWith("es")) out.push(term.slice(0, -2));
+  return out;
+}
+
 function termLevel(term: string, text: string, fuzzyWords: string[]): number {
   if (text.includes(` ${term} `)) return WHOLE;
   if (text.includes(term)) return PARTIAL;
+  // Plural typed, singular stored: "gloves" finds "GLOVE", "dishes" finds "Dish".
+  for (const s of singulars(term)) {
+    if (text.includes(` ${s} `)) return WHOLE;
+    if (text.includes(s)) return PARTIAL;
+  }
   const max = allowedTypos(term);
   if (max > 0 && fuzzyWords.some((w) => fuzzyHit(term, w, max))) return FUZZY;
   return 0;

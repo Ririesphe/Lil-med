@@ -3,6 +3,7 @@ import { Pencil, Plus, Save, Trash2, Upload } from "lucide-react";
 import { formatZAR } from "../../data/products";
 import { logAction } from "../../lib/audit";
 import { supabase, type DbCategory, type DbProduct } from "../../lib/supabase";
+import { matchesSearch } from "../../lib/search";
 
 interface FormState {
   name: string;
@@ -112,13 +113,8 @@ export default function AdminProducts() {
     setForm((f) => ({ ...f, image_url: data.publicUrl }));
   }
 
-  const filtered = items.filter(
-    (p) =>
-      !q ||
-      p.name.toLowerCase().includes(q.toLowerCase()) ||
-      (p.sap || "").toLowerCase().includes(q.toLowerCase()) ||
-      (p.raw_category || "").toLowerCase().includes(q.toLowerCase()) ||
-      (p.categories?.name || "").toLowerCase().includes(q.toLowerCase()),
+  const filtered = items.filter((p) =>
+    matchesSearch(q, [p.name, p.sap, p.raw_category, p.categories?.name]),
   );
 
   const subCategoryOptions = Array.from(

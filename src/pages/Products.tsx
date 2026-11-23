@@ -9,6 +9,7 @@ import {
 } from "../data/products";
 import { useCart } from "../context/CartContext";
 import { useLiveProducts } from "../hooks/useProducts";
+import { matchesSearch } from "../lib/search";
 
 const ALL = "All" as const;
 
@@ -79,12 +80,13 @@ export default function Products() {
       if (rawCat !== "All" && p.rawCategory !== rawCat) return false;
       if (subCat !== "All" && p.rawCategory !== subCat) return false;
       if (
-        query &&
-        !(
-          p.name.toLowerCase().includes(query.toLowerCase()) ||
-          (p.rawCategory || "").toLowerCase().includes(query.toLowerCase()) ||
-          (p.sap || "").toLowerCase().includes(query.toLowerCase())
-        )
+        !matchesSearch(query, [
+          p.name,
+          p.rawCategory,
+          p.sap,
+          p.category,
+          ...Object.values(p.specs || {}),
+        ])
       )
         return false;
       return true;

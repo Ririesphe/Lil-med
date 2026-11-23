@@ -10,13 +10,8 @@ import {
 } from "../data/products";
 import { useCart } from "../context/CartContext";
 import { useLiveProducts } from "../hooks/useProducts";
-import VariantPicker from "../components/VariantPicker";
-import {
-  defaultSelection,
-  missingChoices,
-  variantGroups,
-  type VariantSelection,
-} from "../lib/variants";
+import AddToQuoteDialog from "../components/AddToQuoteDialog";
+import { choiceGroups, variantGroups, type VariantSelection } from "../lib/variants";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -24,13 +19,9 @@ export default function ProductDetail() {
   const { add } = useCart();
   const { items: dbItems } = useLiveProducts();
   const [added, setAdded] = useState(false);
-  const [choice, setChoice] = useState<VariantSelection>({});
-  const [missing, setMissing] = useState<string[]>([]);
-  // A new product starts with no size chosen.
-  useEffect(() => {
-    setChoice({});
-    setMissing([]);
-  }, [id]);
+  // Size / variation popup, opened by "Add to Quote" / "Quote Now".
+  const [choosing, setChoosing] = useState<null | "add" | "quote">(null);
+  useEffect(() => setChoosing(null), [id]);
 
   const product: Product | undefined = useMemo(() => {
     const local = LOCAL.find((p) => p.id === id);
@@ -76,32 +67,32 @@ export default function ProductDetail() {
   ).slice(0, 4);
 
   const groups = variantGroups(product.specs);
-  const selection: VariantSelection = { ...defaultSelection(groups), ...choice };
-  const payload = () => ({
+  const needsChoice = choiceGroups(groups).length > 0;
+  const payload = (variant?: VariantSelection) => ({
     productId: product.id,
     name: product.name,
     price: product.price,
     image: product.image,
     sku: product.sap || undefined,
-    variant: Object.keys(selection).length ? selection : undefined,
+    variant,
   });
-  // Products with several sizes / variations need a choice before they can be added.
-  const ready = () => {
-    const need = missingChoices(groups, selection);
-    setMissing(need);
-    return need.length === 0;
+  // A product with a single size still records it on the quote.
+  const singleOption = (): VariantSelection | undefined => {
+    const one = Object.fromEntries(groups.filter((g) => g.options.length === 1).map((g) => [g.label, g.options[0]]));
+    return Object.keys(one).length ? one : undefined;
   };
-  const onAdd = () => {
-    if (!ready()) return;
-    add(payload());
+  const doAdd = (variant = singleOption(), qty = 1) => {
+    add(payload(variant), qty);
     setAdded(true);
     setTimeout(() => setAdded(false), 1400);
   };
-  const onQuote = () => {
-    if (!ready()) return;
-    add(payload());
+  const doQuote = (variant = singleOption(), qty = 1) => {
+    add(payload(variant), qty);
     navigate("/checkout");
   };
+  // Products with several sizes open the size popup; others add straight away.
+  const onAdd = () => (needsChoice ? setChoosing("add") : doAdd());
+  const onQuote = () => (needsChoice ? setChoosing("quote") : doQuote());
 
   return (
     <div className="bg-white">
@@ -196,25 +187,6 @@ export default function ProductDetail() {
                 </span>
               )}
             </div>
-
-            {groups.some((g) => g.options.length > 1) && (
-              <div className="mt-6 rounded-2xl border border-black/5 bg-brand-cream/40 p-4 sm:max-w-xl">
-                <VariantPicker
-                  groups={groups}
-                  value={selection}
-                  missing={missing}
-                  onChange={(next) => {
-                    setChoice(next);
-                    setMissing(missingChoices(groups, next));
-                  }}
-                />
-                {missing.length > 0 && (
-                  <p className="mt-3 text-sm font-semibold text-brand-red" role="alert">
-                    Please choose a {missing.join(" and ").toLowerCase()} before adding this product to your quote.
-                  </p>
-                )}
-              </div>
-            )}
 
             <div className="mt-6 grid grid-cols-2 gap-3 sm:max-w-md">
               <button
@@ -313,6 +285,19 @@ export default function ProductDetail() {
           </div>
         )}
       </section>
+      {choosing && (
+        <AddToQuoteDialog
+          product={product}
+          mode={choosing}
+          onCancel={() => setChoosing(null)}
+          onConfirm={(variant, qty) => {
+            const mode = choosing;
+            setChoosing(null);
+            if (mode === "quote") doQuote(variant, qty);
+            else doAdd(variant, qty);
+          }}
+        />
+      )}
     </div>
   );
 }

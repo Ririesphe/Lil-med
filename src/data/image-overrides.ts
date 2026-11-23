@@ -70,7 +70,6 @@ export const productImageOverrides: Record<string, string> = {
   "200": publicImage("/imgs/image14.png"),  // 6. Syringes (Surgi Plus Luer Slip)
   "203": batchOne("Test Tube 12_75mm, PP .jpg"),
   "206": publicImage("/imgs/image13.png"),  // 7. 16×75mm Test Tube
-  "213": publicImage("/imgs/image5.png"),   // 25. Transparent Surgical Tape
   "218": batchOne("Urine container 60 ml, 90 ml, 100 ml, 120 ml.jpg"),
   "221": publicImage("/imgs/image7.png"),   // 27. ESR Pipette Adaptor
 

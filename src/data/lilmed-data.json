@@ -4211,6 +4211,26 @@
    }
   },
   {
+   "id": 299,
+   "price": "Request Quote",
+   "galleryImages": [],
+   "name": "Filter Tips",
+   "model": "",
+   "category": "laboratory-products",
+   "categoryName": "Laboratory Products",
+   "description": "Sterile racked filter pipette tips in 100 µl, 200 µl and 1000 µl sizes.",
+   "image": "filter-tips.png",
+   "imageFolder": "product-photos",
+   "featured": false,
+   "minOrder": "1 box",
+   "sourceCategory": "laboratory",
+   "productSubcategory": "laboratory-plastic-consumables",
+   "productSubcategoryName": "Laboratory Plastic Consumables",
+   "specifications": {
+    "Sizes": "TIPS FILTER RACKED STERILE 100UL 960/BOX\nTIPS FILTER RACKED STERILE 200UL BX960\nTIPS FILTER RACKED STERILE 1000UL1000/BOX"
+   }
+  },
+  {
    "id": 184,
    "price": "Request Quote",
    "galleryImages": [],

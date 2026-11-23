@@ -119,7 +119,6 @@ export const productImageOverrides: Record<string, string> = {
   "222": batchOne("VAGINAL SPECULUM.png"),
   "224": publicImage("/generated/clean-lab-product-kit.jpg"),
   "136": publicImage("/generated/specimen-container.jpg"),
-  "245": publicImage("/imgs/image24.png"),  // 19. Disposable Vacuum Blood Collection Tubes
   "250": publicImage("/generated/specimen-container.webp"),
   "256": publicImage("/generated/blood-collection-needle.webp"),
 };

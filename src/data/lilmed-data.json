@@ -5654,50 +5654,6 @@
    "productSubcategoryName": "Laboratory Bottle Consumables"
   },
   {
-   "id": 245,
-   "name": "Disposable Vacuum Blood Collection Tube",
-   "model": "LC-004",
-   "category": "blood-collection-tubes-needles",
-   "categoryName": "Blood Collection Tubes & Needles",
-   "price": "Request Quote",
-   "description": "Disposable Vacuum Blood Collection Tube: Laboratory consumables supplied by LilMed for sample collection, preparation, storage, and testing workflows.",
-   "image": "",
-   "imageFolder": "drive-download-20260630T094004Z-3-001/disposable vacuum blood collection tube",
-   "galleryImages": [
-    {
-     "file": "红管.jpg",
-     "folder": "drive-download-20260630T094004Z-3-001/disposable vacuum blood collection tube"
-    },
-    {
-     "file": "绿管.jpg",
-     "folder": "drive-download-20260630T094004Z-3-001/disposable vacuum blood collection tube"
-    },
-    {
-     "file": "蓝管.jpg",
-     "folder": "drive-download-20260630T094004Z-3-001/disposable vacuum blood collection tube"
-    },
-    {
-     "file": "紫管.jpg",
-     "folder": "drive-download-20260630T094004Z-3-001/disposable vacuum blood collection tube"
-    },
-    {
-     "file": "灰管.jpg",
-     "folder": "drive-download-20260630T094004Z-3-001/disposable vacuum blood collection tube"
-    },
-    {
-     "file": "采血针.jpg",
-     "folder": "drive-download-20260630T094004Z-3-001/disposable vacuum blood collection tube"
-    }
-   ],
-   "featured": true,
-   "localFolderProduct": true,
-   "usedFor": "Routine sample collection, preparation, handling, storage, and laboratory testing.",
-   "minOrder": "1 unit",
-   "sourceCategory": "laboratory",
-   "productSubcategory": "blood-collection-tubes",
-   "productSubcategoryName": "Blood Collection Tubes"
-  },
-  {
    "id": 246,
    "name": "Medicine Package",
    "model": "LC-005",

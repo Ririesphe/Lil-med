@@ -4529,13 +4529,13 @@
    "id": 199,
    "price": "Request Quote",
    "galleryImages": [],
-   "name": "SUPREME STER AND POWD FREE SURG GLOVE Box/50",
+   "name": "Supreme Ster and Powder free",
    "model": "B1-055",
    "category": "medical-equipments",
    "categoryName": "Medical Equipments",
    "pdfCategory": "Surgical & Medical Disposables",
    "sourcePdf": "LILMED.pdf",
-   "description": "SUPREME STER AND POWD FREE SURG GLOVE Box/50 for hand protection and infection-control use during medical, laboratory, and clinical procedures.",
+   "description": "Supreme Ster and Powder free for hand protection and infection-control use during medical, laboratory, and clinical procedures.",
    "image": "blue-nitrile-disposable-surgical-gloves.jpg",
    "imageFolder": "imgs",
    "featured": false,
@@ -4544,7 +4544,10 @@
    "batch1Product": true,
    "sourceCategory": "surgical",
    "productSubcategory": "surgical-and-medical-disposables",
-   "productSubcategoryName": "Surgical & Medical Disposables"
+   "productSubcategoryName": "Surgical & Medical Disposables",
+   "specifications": {
+    "Sizes": "SUPREME STER AND POWD FREE SURG GLOVE 7.5 BOX/50\nSUPREME STER AND POWD FREE SURG GLOVE 7 BOX/50\nSUPREME STERILE POWD FREE SURG GL6.5 BOX 50"
+   }
   },
   {
    "id": 200,

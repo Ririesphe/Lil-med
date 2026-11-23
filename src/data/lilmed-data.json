@@ -3950,27 +3950,6 @@
    "productSubcategoryName": "Blood Collection Tubes"
   },
   {
-   "id": 169,
-   "price": "Request Quote",
-   "galleryImages": [],
-   "name": "ESR Pipettes",
-   "model": "B1-024",
-   "category": "laboratory-products",
-   "categoryName": "Laboratory Products",
-   "pdfCategory": "Laboratory Consumables",
-   "sourcePdf": "LILMED.pdf",
-   "description": "ESR Pipettes for controlled liquid transfer, sample dispensing, and routine laboratory pipetting workflows.",
-   "image": "laboratory-pipette-sample-tube-consumables.jpg",
-   "imageFolder": "imgs",
-   "featured": false,
-   "minOrder": "1 pack",
-   "usedFor": "Laboratory sample collection, preparation, handling, storage, and diagnostic workflows.",
-   "batch1Product": true,
-   "sourceCategory": "laboratory",
-   "productSubcategory": "laboratory-plastic-consumables",
-   "productSubcategoryName": "Laboratory Plastic Consumables"
-  },
-  {
    "id": 170,
    "price": "Request Quote",
    "galleryImages": [],

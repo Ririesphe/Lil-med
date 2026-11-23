@@ -89,7 +89,6 @@ export const productImageOverrides: Record<string, string> = {
   "166": publicImage("/product-photos/vacuum-blood-collection-tube-glucose.png"), // supplied photo (Nov 2026)
   "167": batchOne("Disposable Vacuum Blood Collection Tube (Heparin with Separator Gel Tube).jpg"),
   "168": publicImage("/blood-collection/legacy/regular-tube.jpg?v=r"),
-  "169": batchOne("ESR Pipettes.jpg"),
   "170": batchOne("FIRST AID BOX INCLUDING CONTENTS.jpg"),
   "173": batchOne("Glass Test Tube .png"),
   "175": batchOne("LOOPS INNOCULATING 10UL DISPOSABLE ( 50 packs of 20 ) box_1000.jpg"),

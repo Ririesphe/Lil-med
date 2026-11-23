@@ -4511,27 +4511,6 @@
    "productSubcategoryName": "Surgical & Medical Disposables"
   },
   {
-   "id": 190,
-   "price": "Request Quote",
-   "galleryImages": [],
-   "name": "SAMPLE CUP PLASTIC 1ML- NESTING",
-   "model": "B1-046",
-   "category": "laboratory-products",
-   "categoryName": "Laboratory Products",
-   "pdfCategory": "Laboratory Consumables",
-   "sourcePdf": "LILMED.pdf",
-   "description": "SAMPLE CUP PLASTIC 1ML- NESTING for holding small sample volumes during laboratory analysis and analyzer workflows.",
-   "image": "laboratory-pipette-sample-tube-consumables.jpg",
-   "imageFolder": "imgs",
-   "featured": false,
-   "minOrder": "1 pack",
-   "usedFor": "Laboratory sample collection, preparation, handling, storage, and diagnostic workflows.",
-   "batch1Product": true,
-   "sourceCategory": "laboratory",
-   "productSubcategory": "laboratory-plastic-consumables",
-   "productSubcategoryName": "Laboratory Plastic Consumables"
-  },
-  {
    "id": 191,
    "price": "Request Quote",
    "galleryImages": [],

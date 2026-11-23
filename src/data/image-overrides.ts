@@ -105,7 +105,6 @@ export const productImageOverrides: Record<string, string> = {
   "186": batchOne("Pipette tip.jpg"),
   "188": batchOne("Plastic spatula for blood smear.jpg"),
   "189": batchOne("REGULATIONS FIRST AID REFILL.jpg"),
-  "190": batchOne("SAMPLE CUP PLASTIC 1ML- NESTING.jpg"),
   "192": publicImage("/blood-collection/legacy/butterfly-needle-sharp.jpg?v=r"),
   "195": batchOne("SLIDE TRAY PLASTIC (20 SLIDES) EA.jpg"),
   "196": batchOne("Spectrophotometer Cuvettes .jpg"),

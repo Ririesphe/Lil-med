@@ -3605,6 +3605,26 @@
    }
   },
   {
+   "id": 297,
+   "price": "Request Quote",
+   "galleryImages": [],
+   "name": "Test Tube PS",
+   "model": "",
+   "category": "laboratory-products",
+   "categoryName": "Laboratory Products",
+   "description": "Polystyrene (PS) round-bottom test tube, 16 x 100mm.",
+   "image": "test-tube-ps.png",
+   "imageFolder": "product-photos",
+   "featured": false,
+   "minOrder": "1 pack",
+   "sourceCategory": "laboratory",
+   "productSubcategory": "laboratory-plastic-consumables",
+   "productSubcategoryName": "Laboratory Plastic Consumables",
+   "specifications": {
+    "Sizes": "TEST TUBE PS ROUND BOTTOM 12ML NO CAP 16X100MM BX 1600\nTEST TUBES PS R/B 16X100MM PK 500"
+   }
+  },
+  {
    "id": 147,
    "price": "Request Quote",
    "galleryImages": [],

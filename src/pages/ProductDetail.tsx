@@ -151,7 +151,7 @@ export default function ProductDetail() {
             {product.specs?.Sizes && (
               <div className="mt-4 text-base text-brand-navy">
                 <div className="font-semibold">Sizes:</div>
-                <div className="mt-1 text-brand-charcoal/80">{product.specs.Sizes}</div>
+                <div className="mt-1 whitespace-pre-line text-brand-charcoal/80">{product.specs.Sizes}</div>
               </div>
             )}
 
@@ -227,7 +227,7 @@ export default function ProductDetail() {
                         <th className="w-2/5 px-4 py-3 text-left align-top font-semibold text-brand-navy">
                           {k}
                         </th>
-                        <td className="px-4 py-3 text-brand-charcoal/80">{v}</td>
+                        <td className="whitespace-pre-line px-4 py-3 text-brand-charcoal/80">{v}</td>
                       </tr>
                     ))}
                   </tbody>

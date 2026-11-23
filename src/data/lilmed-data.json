@@ -4364,13 +4364,13 @@
    "id": 183,
    "price": "Request Quote",
    "galleryImages": [],
-   "name": "PIPETTE SEROLOGICAL 10ML SINGLE WRAP STERILE (500/Box)",
+   "name": "Serological Pipette",
    "model": "B1-039",
    "category": "laboratory-products",
    "categoryName": "Laboratory Products",
    "pdfCategory": "Laboratory Consumables",
    "sourcePdf": "LILMED.pdf",
-   "description": "PIPETTE SEROLOGICAL 10ML SINGLE WRAP STERILE (500/Box) for controlled liquid transfer, sample dispensing, and routine laboratory pipetting workflows.",
+   "description": "Serological Pipette for controlled liquid transfer, sample dispensing, and routine laboratory pipetting workflows.",
    "image": "laboratory-pipette-sample-tube-consumables.jpg",
    "imageFolder": "imgs",
    "featured": false,
@@ -4379,7 +4379,10 @@
    "batch1Product": true,
    "sourceCategory": "laboratory",
    "productSubcategory": "laboratory-plastic-consumables",
-   "productSubcategoryName": "Laboratory Plastic Consumables"
+   "productSubcategoryName": "Laboratory Plastic Consumables",
+   "specifications": {
+    "Sizes": "Serological pipette 25ml\nSerological pipette 10ml\nSerological pipette 5ml"
+   }
   },
   {
    "id": 184,

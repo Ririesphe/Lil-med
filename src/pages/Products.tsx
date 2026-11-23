@@ -296,7 +296,7 @@ function ProductCard({ product }: { product: Product }) {
             {product.sap && <span>SKU: {product.sap}</span>}
             {product.innerMoq && <span>Pack: {product.innerMoq}</span>}
             {product.specs?.Sizes && (
-              <span className="text-brand-charcoal/80">
+              <span className="whitespace-pre-line text-brand-charcoal/80">
                 <span className="font-semibold">Sizes:</span>
                 <br />
                 {product.specs.Sizes}

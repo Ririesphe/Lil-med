@@ -22,6 +22,7 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminLayout from "./components/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminProducts from "./pages/admin/AdminProducts";
+import AdminDuplicates from "./pages/admin/AdminDuplicates";
 import AdminOrders from "./pages/admin/AdminOrders";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminLogs from "./pages/admin/AdminLogs";
@@ -61,6 +62,7 @@ export default function App() {
               <Route path="/admin" element={<AdminLayout />}>
                 <Route index element={<AdminDashboard />} />
                 <Route path="products" element={<AdminProducts />} />
+                <Route path="duplicates" element={<AdminDuplicates />} />
                 <Route path="quotes"   element={<AdminOrders status="new" />} />
                 <Route path="closed"   element={<AdminOrders status="closed" />} />
                 <Route path="users"    element={<AdminUsers />} />

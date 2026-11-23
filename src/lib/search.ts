@@ -84,7 +84,7 @@ export function buildSearchIndex(fields: SearchFields): SearchIndex {
 }
 
 /** Optimal string alignment distance (Levenshtein + adjacent transpositions), with early exit. */
-function editDistance(a: string, b: string, max: number): number {
+export function editDistance(a: string, b: string, max: number): number {
   if (Math.abs(a.length - b.length) > max) return max + 1;
   const rows = a.length + 1;
   const cols = b.length + 1;

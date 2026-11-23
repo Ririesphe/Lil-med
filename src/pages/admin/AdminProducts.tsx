@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
-import { Pencil, Plus, Save, Trash2, Upload } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { AlertTriangle, Pencil, Plus, Save, Trash2, Upload } from "lucide-react";
+import { Link } from "react-router-dom";
 import { formatZAR } from "../../data/products";
 import { logAction } from "../../lib/audit";
 import { supabase, type DbCategory, type DbProduct } from "../../lib/supabase";
 import { buildSearchIndex, rankBySearch } from "../../lib/search";
 import ProductImage from "../../components/ProductImage";
+import { findMatchesFor, type DuplicatePair } from "../../lib/duplicates";
+import { catalogueCandidates, databaseCandidate } from "../../data/duplicate-candidates";
 
 interface FormState {
   name: string;
@@ -35,6 +38,8 @@ export default function AdminProducts() {
   const [editing, setEditing] = useState<string | null>(null);
   const [form, setForm] = useState<FormState>(emptyForm);
   const [creating, setCreating] = useState(false);
+  // Set when "Save" found possible duplicates; the admin must choose "Save anyway" or Cancel.
+  const [dupWarning, setDupWarning] = useState<DuplicatePair[] | null>(null);
 
   useEffect(() => {
     load();
@@ -74,7 +79,42 @@ export default function AdminProducts() {
     });
   }
 
-  async function save(id: string | null) {
+  // Existing products the new product would duplicate (website catalogue + database).
+  const existingCandidates = useMemo(
+    () => [...catalogueCandidates(), ...items.map(databaseCandidate)],
+    [items],
+  );
+  const categoryName = categories.find((c) => c.id === form.category_id)?.name || "";
+  const duplicateMatches = useMemo(() => {
+    if (!creating || form.name.trim().length < 3) return [];
+    return findMatchesFor(
+      {
+        id: "new",
+        source: "database",
+        name: form.name,
+        sku: form.sap,
+        category: categoryName,
+        subcategory: form.raw_category,
+        image: form.image_url,
+        description: form.description,
+        price: form.price,
+        specs: form.inner_moq ? { "Pack size": form.inner_moq } : undefined,
+      },
+      existingCandidates,
+    );
+  }, [creating, form, categoryName, existingCandidates]);
+  const candidateByKey = useMemo(
+    () => new Map(existingCandidates.map((c) => [c.key, c])),
+    [existingCandidates],
+  );
+
+  async function save(id: string | null, confirmedDuplicate = false) {
+    // New product: warn about possible duplicates first. Nothing is changed or merged.
+    if (!id && !confirmedDuplicate && duplicateMatches.length > 0) {
+      setDupWarning(duplicateMatches);
+      return;
+    }
+    setDupWarning(null);
     const payload = {
       name: form.name,
       sap: form.sap || null,
@@ -90,7 +130,7 @@ export default function AdminProducts() {
       logAction("product.update", id, payload);
     } else {
       const { data } = await supabase.from("products").insert(payload).select().single();
-      logAction("product.create", data?.id, payload);
+      logAction("product.create", data?.id, confirmedDuplicate ? { ...payload, saved_despite_duplicate_warning: true } : payload);
     }
     setEditing(null);
     setCreating(false);
@@ -147,6 +187,7 @@ export default function AdminProducts() {
               setCreating(true);
               setEditing(null);
               setForm(emptyForm);
+              setDupWarning(null);
             }}
             className="btn-shine inline-flex items-center gap-1 rounded-full bg-brand-teal px-4 py-2 text-sm font-bold text-white"
           >
@@ -221,22 +262,84 @@ export default function AdminProducts() {
           {form.image_url && (
             <img src={form.image_url} alt="preview" className="mt-3 h-24 rounded ring-1 ring-black/5" />
           )}
+          {creating && duplicateMatches.length > 0 && (
+            <div
+              className={`mt-4 rounded-xl p-4 text-sm ring-1 ${
+                dupWarning ? "bg-rose-50 ring-rose-300" : "bg-amber-50 ring-amber-200"
+              }`}
+            >
+              <div className="flex items-center gap-2 font-semibold text-brand-navy">
+                <AlertTriangle size={16} className={dupWarning ? "text-rose-600" : "text-amber-600"} />
+                {dupWarning
+                  ? "This product may already exist. Check the matches below before saving."
+                  : `Possible duplicate${duplicateMatches.length > 1 ? "s" : ""} of existing products`}
+              </div>
+              <ul className="mt-2 space-y-2">
+                {duplicateMatches.slice(0, 8).map((m) => {
+                  const c = candidateByKey.get(m.b);
+                  if (!c) return null;
+                  return (
+                    <li key={m.b} className="flex gap-3">
+                      <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-white ring-1 ring-black/5">
+                        <ProductImage src={c.image} alt={c.name} fallbackText="text-[8px]" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="font-semibold text-brand-navy">
+                          {c.name}
+                          <span
+                            className={`ml-2 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${
+                              m.kind === "exact" ? "bg-rose-100 text-rose-700" : "bg-amber-100 text-amber-800"
+                            }`}
+                          >
+                            {m.kind}
+                          </span>
+                        </div>
+                        <div className="text-xs text-gray-600">
+                          {[c.sku, [c.category, c.subcategory].filter(Boolean).join(" › ")].filter(Boolean).join(" · ")}
+                        </div>
+                        <div className="text-xs text-gray-500">{m.reasons.join(" · ")}</div>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+              {duplicateMatches.length > 8 && (
+                <div className="mt-1 text-xs text-gray-500">…and {duplicateMatches.length - 8} more.</div>
+              )}
+              <div className="mt-2 text-xs text-gray-500">
+                Size, brand, colour and packaging variants of the same product are not listed here.{" "}
+                <Link to="/admin/duplicates" className="font-semibold text-brand-teal hover:underline">
+                  Open the duplicate report
+                </Link>
+              </div>
+            </div>
+          )}
           <div className="mt-4 flex justify-end gap-2">
             <button
               onClick={() => {
                 setCreating(false);
                 setEditing(null);
+                setDupWarning(null);
               }}
               className="rounded-full border border-black/10 px-4 py-2 text-sm font-semibold text-brand-navy"
             >
               Cancel
             </button>
-            <button
-              onClick={() => save(editing)}
-              className="btn-shine inline-flex items-center gap-1 rounded-full bg-brand-teal px-4 py-2 text-sm font-bold text-white"
-            >
-              <Save size={14} /> Save
-            </button>
+            {dupWarning ? (
+              <button
+                onClick={() => save(null, true)}
+                className="inline-flex items-center gap-1 rounded-full bg-rose-600 px-4 py-2 text-sm font-bold text-white"
+              >
+                <Save size={14} /> Save anyway
+              </button>
+            ) : (
+              <button
+                onClick={() => save(editing)}
+                className="btn-shine inline-flex items-center gap-1 rounded-full bg-brand-teal px-4 py-2 text-sm font-bold text-white"
+              >
+                <Save size={14} /> Save
+              </button>
+            )}
           </div>
         </div>
       )}

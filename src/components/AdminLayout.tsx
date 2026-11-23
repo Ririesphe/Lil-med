@@ -1,6 +1,6 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { LayoutDashboard, FileText, Boxes, Users, ScrollText, LogOut } from "lucide-react";
+import { LayoutDashboard, FileText, Boxes, Copy, Users, ScrollText, LogOut } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import Logo from "./Logo";
 
@@ -9,6 +9,7 @@ const items = [
   { to: "/admin/quotes", label: "New quotes", icon: FileText },
   { to: "/admin/closed", label: "Closed quotes", icon: FileText },
   { to: "/admin/products", label: "Products", icon: Boxes },
+  { to: "/admin/duplicates", label: "Duplicates", icon: Copy },
   { to: "/admin/users", label: "Admins", icon: Users },
   { to: "/admin/logs", label: "Audit log", icon: ScrollText },
 ];

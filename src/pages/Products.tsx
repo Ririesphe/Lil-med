@@ -336,13 +336,6 @@ function ProductCard({ product }: { product: Product }) {
           <div className="mt-3 grid gap-1 text-[11px] text-brand-charcoal/60">
             {product.sap && <span>SKU: {product.sap}</span>}
             {product.innerMoq && <span>Pack: {product.innerMoq}</span>}
-            {product.specs?.Sizes && (
-              <span className="whitespace-pre-line text-brand-charcoal/80">
-                <span className="font-semibold">Sizes:</span>
-                <br />
-                {product.specs.Sizes}
-              </span>
-            )}
           </div>
           <div className="mt-3 font-bold text-lg text-brand-navy">{formatZAR(product.price)}</div>
           <div className="mt-3 grid grid-cols-2 gap-2">

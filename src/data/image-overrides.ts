@@ -83,7 +83,6 @@ export const productImageOverrides: Record<string, string> = {
   "152": batchOne("ALCOHOL HAND SANITIZER (500ml).jpg"),
   "154": batchOne("BONE MARROW BIOPSY_ASPIRATION NEEDLE 10_BOX.jpg"),
   "156": batchOne("Cell Culture Bottle.jpg"),
-  "157": batchOne("Cell Culture Dish.jpg"),
   "158": batchOne("Cell Culture Flash.png"),
   "159": batchOne("Cell Culture Plate.jpg"),
   "160": publicImage("/generated/conductive-pipette-tips.jpg"),

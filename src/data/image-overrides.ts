@@ -88,7 +88,7 @@ export const productImageOverrides: Record<string, string> = {
   "160": publicImage("/generated/conductive-pipette-tips.jpg"),
   "162": batchOne("Disposable Blood Collection Tube (Serum Clot Activator Tube) .jpg"),
   "163": publicImage("/blood-collection/legacy/serum-gel-sharp.jpg?v=r"),
-  "166": batchOne("Disposable Vacuum Blood Collection Tube (Glucose Tube) .jpg"),
+  "166": publicImage("/product-photos/vacuum-blood-collection-tube-glucose.png"), // supplied photo (Nov 2026)
   "167": batchOne("Disposable Vacuum Blood Collection Tube (Heparin with Separator Gel Tube).jpg"),
   "168": publicImage("/blood-collection/legacy/regular-tube.jpg?v=r"),
   "169": batchOne("ESR Pipettes.jpg"),

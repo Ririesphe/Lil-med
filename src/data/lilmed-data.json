@@ -4232,27 +4232,6 @@
    "productSubcategoryName": "Laboratory Plastic Consumables"
   },
   {
-   "id": 185,
-   "price": "Request Quote",
-   "galleryImages": [],
-   "name": "Pipette Tip Fit for Gilson 10ul、200UL、1000UL",
-   "model": "B1-041",
-   "category": "laboratory-products",
-   "categoryName": "Laboratory Products",
-   "pdfCategory": "Laboratory Consumables",
-   "sourcePdf": "LILMED.pdf",
-   "description": "Pipette Tip Fit for Gilson 10ul、200UL、1000UL for accurate pipetting and liquid handling in laboratory sample preparation workflows.",
-   "image": "laboratory-pipette-sample-tube-consumables.jpg",
-   "imageFolder": "imgs",
-   "featured": false,
-   "minOrder": "1 pack",
-   "usedFor": "Laboratory sample collection, preparation, handling, storage, and diagnostic workflows.",
-   "batch1Product": true,
-   "sourceCategory": "laboratory",
-   "productSubcategory": "laboratory-plastic-consumables",
-   "productSubcategoryName": "Laboratory Plastic Consumables"
-  },
-  {
    "id": 186,
    "price": "Request Quote",
    "galleryImages": [],

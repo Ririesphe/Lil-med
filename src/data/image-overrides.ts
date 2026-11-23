@@ -28,7 +28,6 @@ export const productImageOverrides: Record<string, string> = {
   "219": publicImage("/product-photos/urine-test-tube.png"), // 17. Urine Test Tube
   "220": publicImage("/product-photos/urine-transfer-device.png"), // 19. Urine Transfer Device
   "223": publicImage("/product-photos/waste-sharp-container-yellow.png"), // 20. Waste Sharp Container Yellow
-  "185": publicImage("/product-photos/pipette-tips-eppendorf-gilson.png"), // 24. Pipette Tip Fit For Gilson 10ul, 200ul, 1000ul
   "187": publicImage("/product-photos/pipette-tips-eppendorf-gilson.png"), // 25. Pipette Tips Gilson Yellow 200ul BX of 1000
   "210": publicImage("/product-photos/transfer-pipettes.png"), // 26. Transfer Pipette 1ml-2ml
   "198": publicImage("/product-photos/stick-applicator.png"), // 27. Stick Applicator Bx 1000

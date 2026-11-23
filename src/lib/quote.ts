@@ -11,7 +11,7 @@ interface QuoteInput {
     company?: string;
     notes?: string;
   };
-  items: Array<{ name: string; qty: number; price: number; sku?: string }>;
+  items: Array<{ name: string; qty: number; price: number; sku?: string; variant?: string }>;
   total: number;
 }
 
@@ -80,7 +80,7 @@ export async function buildQuotePdf(quote: QuoteInput) {
     head: [["#", "Item", "SKU", "Qty", "Unit price", "Subtotal"]],
     body: quote.items.map((i, ix) => [
       String(ix + 1),
-      i.name,
+      i.variant ? `${i.name}\n${i.variant}` : i.name,
       i.sku || "-",
       String(i.qty),
       formatZAR(i.price),

@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { ShoppingCart, ArrowRight } from "lucide-react";
-import { useCart } from "../context/CartContext";
-import { formatZAR } from "../data/products";
+import { productIdOf, useCart } from "../context/CartContext";
+import { formatZAR, products as LOCAL } from "../data/products";
+import { choiceGroups, describeSelection, variantGroups } from "../lib/variants";
 
 export default function Cart() {
-  const { items, setQty, remove, total, clear } = useCart();
+  const { items, setQty, setVariant, remove, total, clear } = useCart();
+  const groupsFor = (productId: string) =>
+    choiceGroups(variantGroups(LOCAL.find((p) => p.id === productId)?.specs));
   return (
     <section className="mx-auto max-w-5xl px-4 py-16 md:px-8">
       <div className="flex items-end justify-between gap-4">
@@ -54,6 +57,33 @@ export default function Cart() {
                 )}
                 <div className="flex-1 min-w-0">
                   <div className="truncate font-semibold text-brand-navy">{i.name}</div>
+                  {i.sku && <div className="text-xs text-brand-charcoal/60">SKU: {i.sku}</div>}
+                  {groupsFor(productIdOf(i)).length > 0 ? (
+                    // Change the chosen size / variation without removing the line.
+                    <div className="mt-1 flex flex-wrap gap-2">
+                      {groupsFor(productIdOf(i)).map((g) => (
+                        <label key={g.label} className="flex items-center gap-1 text-xs text-brand-charcoal/80">
+                          <span className="font-semibold text-brand-navy">{g.label}:</span>
+                          <select
+                            value={i.variant?.[g.label] || ""}
+                            onChange={(e) => setVariant(i.id, { ...(i.variant || {}), [g.label]: e.target.value })}
+                            className="max-w-[16rem] rounded-md border border-black/10 bg-white px-2 py-1 text-xs"
+                          >
+                            {!i.variant?.[g.label] && <option value="">Choose {g.label.toLowerCase()}…</option>}
+                            {g.options.map((o) => (
+                              <option key={o} value={o}>
+                                {o}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                      ))}
+                    </div>
+                  ) : (
+                    describeSelection(i.variant) && (
+                      <div className="text-xs text-brand-charcoal/80">{describeSelection(i.variant)}</div>
+                    )
+                  )}
                   <div className="text-sm text-brand-charcoal/70">{formatZAR(i.price)} each</div>
                 </div>
                 <input

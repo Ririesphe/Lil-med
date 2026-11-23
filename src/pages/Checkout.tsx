@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useCart } from "../context/CartContext";
-import { formatZAR } from "../data/products";
+import { productIdOf, useCart } from "../context/CartContext";
+import { formatZAR, products as LOCAL } from "../data/products";
 import { supabase } from "../lib/supabase";
 import { buildQuotePdf } from "../lib/quote";
+import { describeSelection, missingChoices, variantGroups } from "../lib/variants";
 
 interface FormState {
   name: string;
@@ -36,6 +37,19 @@ export default function Checkout() {
     setLoading(true);
     setErr(null);
 
+    // Every product that comes in several sizes must have one chosen.
+    const unchosen = items.filter((i) => {
+      const product = LOCAL.find((p) => p.id === productIdOf(i));
+      return missingChoices(variantGroups(product?.specs), i.variant || {}).length > 0;
+    });
+    if (unchosen.length) {
+      setLoading(false);
+      setErr(
+        `Please choose a size for: ${unchosen.map((i) => i.name).join(", ")}. You can do this in your cart.`,
+      );
+      return;
+    }
+
     const reference = "QUOTE-" + Date.now().toString(36).toUpperCase();
     const quotePayload = {
       reference,
@@ -44,7 +58,8 @@ export default function Checkout() {
         name: i.name,
         qty: i.qty,
         price: i.price,
-        sku: i.id,
+        sku: i.sku || LOCAL.find((p) => p.id === productIdOf(i))?.sap || productIdOf(i),
+        variant: describeSelection(i.variant) || undefined,
       })),
       total,
       date: new Date().toISOString(),
@@ -188,6 +203,9 @@ export default function Checkout() {
                 <div key={i.id} className="flex justify-between gap-3 border-b border-black/5 pb-2">
                   <div className="min-w-0">
                     <div className="truncate font-semibold text-brand-navy">{i.name}</div>
+                    {describeSelection(i.variant) && (
+                      <div className="text-xs text-brand-charcoal/80">{describeSelection(i.variant)}</div>
+                    )}
                     <div className="text-xs text-brand-charcoal/60">
                       {i.qty} × {formatZAR(i.price)}
                     </div>

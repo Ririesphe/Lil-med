@@ -37,7 +37,7 @@ export type DbQuote = {
   customer_phone: string | null;
   company: string | null;
   notes: string | null;
-  items: Array<{ name: string; qty: number; price: number; sku?: string }>;
+  items: Array<{ name: string; qty: number; price: number; sku?: string; variant?: string }>;
   total: number;
   status: "new" | "contacted" | "closed";
   emailed: boolean;

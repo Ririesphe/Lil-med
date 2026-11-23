@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-type QuoteItem = { name: string; qty: number; price?: number; sku?: string };
+type QuoteItem = { name: string; qty: number; price?: number; sku?: string; variant?: string };
 
 type Body = {
   reference: string;
@@ -111,7 +111,7 @@ function renderEmailHtml(b: Body) {
   const rows = b.items
     .map(
       (i) => `<tr>
-        <td style="padding:8px;border-bottom:1px solid #eee">${esc(i.name)}${i.sku ? ` <span style='color:#888;font-size:12px'>[${esc(i.sku)}]</span>` : ""}</td>
+        <td style="padding:8px;border-bottom:1px solid #eee">${esc(i.name)}${i.sku ? ` <span style='color:#888;font-size:12px'>[${esc(i.sku)}]</span>` : ""}${i.variant ? `<br/><span style='color:#0b3a6f;font-size:12px'>${esc(i.variant)}</span>` : ""}</td>
         <td style="padding:8px;border-bottom:1px solid #eee;text-align:center">${i.qty}</td>
         <td style="padding:8px;border-bottom:1px solid #eee;text-align:right">${i.price ? fmtR(i.price) : "On request"}</td>
       </tr>`,

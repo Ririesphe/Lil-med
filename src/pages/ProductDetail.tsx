@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ShieldCheck, Truck, PackageCheck } from "lucide-react";
@@ -10,6 +10,13 @@ import {
 } from "../data/products";
 import { useCart } from "../context/CartContext";
 import { useLiveProducts } from "../hooks/useProducts";
+import VariantPicker from "../components/VariantPicker";
+import {
+  defaultSelection,
+  missingChoices,
+  variantGroups,
+  type VariantSelection,
+} from "../lib/variants";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -17,6 +24,13 @@ export default function ProductDetail() {
   const { add } = useCart();
   const { items: dbItems } = useLiveProducts();
   const [added, setAdded] = useState(false);
+  const [choice, setChoice] = useState<VariantSelection>({});
+  const [missing, setMissing] = useState<string[]>([]);
+  // A new product starts with no size chosen.
+  useEffect(() => {
+    setChoice({});
+    setMissing([]);
+  }, [id]);
 
   const product: Product | undefined = useMemo(() => {
     const local = LOCAL.find((p) => p.id === id);
@@ -61,18 +75,30 @@ export default function ProductDetail() {
     (p) => p.category === product.category && p.id !== product.id,
   ).slice(0, 4);
 
+  const groups = variantGroups(product.specs);
+  const selection: VariantSelection = { ...defaultSelection(groups), ...choice };
   const payload = () => ({
-    id: product.id,
+    productId: product.id,
     name: product.name,
     price: product.price,
     image: product.image,
+    sku: product.sap || undefined,
+    variant: Object.keys(selection).length ? selection : undefined,
   });
+  // Products with several sizes / variations need a choice before they can be added.
+  const ready = () => {
+    const need = missingChoices(groups, selection);
+    setMissing(need);
+    return need.length === 0;
+  };
   const onAdd = () => {
+    if (!ready()) return;
     add(payload());
     setAdded(true);
     setTimeout(() => setAdded(false), 1400);
   };
   const onQuote = () => {
+    if (!ready()) return;
     add(payload());
     navigate("/checkout");
   };
@@ -170,6 +196,25 @@ export default function ProductDetail() {
                 </span>
               )}
             </div>
+
+            {groups.some((g) => g.options.length > 1) && (
+              <div className="mt-6 rounded-2xl border border-black/5 bg-brand-cream/40 p-4 sm:max-w-xl">
+                <VariantPicker
+                  groups={groups}
+                  value={selection}
+                  missing={missing}
+                  onChange={(next) => {
+                    setChoice(next);
+                    setMissing(missingChoices(groups, next));
+                  }}
+                />
+                {missing.length > 0 && (
+                  <p className="mt-3 text-sm font-semibold text-brand-red" role="alert">
+                    Please choose a {missing.join(" and ").toLowerCase()} before adding this product to your quote.
+                  </p>
+                )}
+              </div>
+            )}
 
             <div className="mt-6 grid grid-cols-2 gap-3 sm:max-w-md">
               <button

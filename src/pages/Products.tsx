@@ -10,6 +10,14 @@ import {
 import { useCart } from "../context/CartContext";
 import { useLiveProducts } from "../hooks/useProducts";
 import { buildSearchIndex, rankBySearch, searchTerms } from "../lib/search";
+import VariantPicker from "../components/VariantPicker";
+import {
+  choiceGroups,
+  defaultSelection,
+  missingChoices,
+  variantGroups,
+  type VariantSelection,
+} from "../lib/variants";
 
 const ALL = "All" as const;
 
@@ -247,21 +255,55 @@ function ProductCard({ product }: { product: Product }) {
   const info = CATS.find((c) => c.name === product.category) || CATS[0];
   const [added, setAdded] = useState(false);
   const [preview, setPreview] = useState(false);
+  // Size / variation chooser: which button opened it, and what has been picked.
+  const [choosing, setChoosing] = useState<null | "add" | "quote">(null);
+  const [choice, setChoice] = useState<VariantSelection>({});
+  const [missing, setMissing] = useState<string[]>([]);
+  const groups = useMemo(() => variantGroups(product.specs), [product.specs]);
+  const needsChoice = choiceGroups(groups).length > 0;
+  const selection: VariantSelection = { ...defaultSelection(groups), ...choice };
 
   const payload = () => ({
-    id: product.id,
+    productId: product.id,
     name: product.name,
     price: product.price,
     image: product.image,
+    sku: product.sap || undefined,
+    variant: Object.keys(selection).length ? selection : undefined,
   });
-  const onAdd = () => {
+  const doAdd = () => {
     add(payload());
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
   };
-  const onQuote = () => {
+  const doQuote = () => {
     add(payload());
     navigate("/checkout");
+  };
+  // Products with several sizes ask for a choice first; others add straight away.
+  const onAdd = () => {
+    if (needsChoice) {
+      setPreview(false);
+      setChoice({});
+      setMissing([]);
+      setChoosing("add");
+    } else doAdd();
+  };
+  const onQuote = () => {
+    if (needsChoice) {
+      setPreview(false);
+      setChoice({});
+      setMissing([]);
+      setChoosing("quote");
+    } else doQuote();
+  };
+  const confirmChoice = (mode: "add" | "quote") => {
+    const need = missingChoices(groups, selection);
+    setMissing(need);
+    if (need.length) return;
+    setChoosing(null);
+    if (mode === "add") doAdd();
+    else doQuote();
   };
 
   return (
@@ -343,6 +385,69 @@ function ProductCard({ product }: { product: Product }) {
           </Link>
         </div>
       </motion.div>
+
+      {choosing && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-brand-navy/80 p-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Choose options for ${product.name}`}
+          onClick={() => setChoosing(null)}
+        >
+          <div
+            className="max-h-[92vh] w-full max-w-lg overflow-auto rounded-3xl bg-white p-5 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <div className="text-xs font-bold uppercase tracking-[0.25em] text-brand-teal">
+                  Choose options
+                </div>
+                <h3 className="mt-2 font-display text-xl leading-tight text-brand-navy">{product.name}</h3>
+                {product.sap && <div className="mt-1 text-xs text-brand-charcoal/60">SKU: {product.sap}</div>}
+              </div>
+              <button
+                onClick={() => setChoosing(null)}
+                className="rounded-full border border-black/10 px-3 py-1 text-sm font-bold text-brand-navy"
+                aria-label="Close"
+              >
+                ×
+              </button>
+            </div>
+            <div className="mt-4">
+              <VariantPicker
+                groups={groups}
+                value={selection}
+                missing={missing}
+                compact
+                onChange={(next) => {
+                  setChoice(next);
+                  setMissing(missingChoices(groups, next));
+                }}
+              />
+              {missing.length > 0 && (
+                <p className="mt-3 text-sm font-semibold text-brand-red" role="alert">
+                  Please choose a {missing.join(" and ").toLowerCase()} first.
+                </p>
+              )}
+            </div>
+            <div className="mt-5 grid grid-cols-2 gap-2">
+              <button
+                onClick={() => confirmChoice("add")}
+                className="btn-shine btn-lift rounded-full bg-brand-teal px-4 py-2 text-xs font-bold uppercase tracking-widest text-white"
+              >
+                Add to Quote
+              </button>
+              <button
+                onClick={() => confirmChoice("quote")}
+                className="btn-lift rounded-full border border-brand-navy bg-white px-4 py-2 text-xs font-bold uppercase tracking-widest text-brand-navy hover:bg-brand-navy hover:text-white"
+              >
+                Quote Now
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {preview && (
         <div

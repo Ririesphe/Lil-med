@@ -3,7 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { Search, FileText, Clock, CheckCircle2, XCircle, Mail } from "lucide-react";
 import { formatZAR } from "../data/products";
 
-type QuoteItem = { name: string; qty: number; price?: number; sku?: string };
+type QuoteItem = { name: string; qty: number; price?: number; sku?: string; variant?: string };
 type QuoteResult = {
   reference: string;
   status: "new" | "contacted" | "closed" | string;
@@ -175,8 +175,13 @@ export default function MyQuote() {
                   key={ix}
                   className="flex justify-between gap-3 border-b border-black/5 pb-1 last:border-0"
                 >
-                  <span className="truncate">
-                    {i.qty} × {i.name}
+                  <span className="min-w-0">
+                    <span className="block truncate">
+                      {i.qty} × {i.name}
+                    </span>
+                    {i.variant && (
+                      <span className="block text-xs text-brand-charcoal/70">{i.variant}</span>
+                    )}
                   </span>
                   <span className="font-semibold text-brand-navy">
                     {i.price ? formatZAR(i.price * i.qty) : "On request"}

@@ -153,7 +153,14 @@ export default function AdminOrders({ status }: Props) {
                 <tbody>
                   {open.items?.map((i, ix) => (
                     <tr key={ix} className="border-t">
-                      <td className="px-2 py-2">{i.name}</td>
+                      <td className="px-2 py-2">
+                        {i.name}
+                        {(i.variant || i.sku) && (
+                          <div className="text-xs text-gray-500">
+                            {[i.variant, i.sku && `SKU: ${i.sku}`].filter(Boolean).join(" · ")}
+                          </div>
+                        )}
+                      </td>
                       <td className="px-2 py-2 text-center">{i.qty}</td>
                       <td className="px-2 py-2 text-right">{formatZAR(i.price)}</td>
                     </tr>

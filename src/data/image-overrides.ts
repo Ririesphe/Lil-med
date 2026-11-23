@@ -63,7 +63,6 @@ export const productImageOverrides: Record<string, string> = {
   "165": batchOne("Disposable Vacuum Blood Collection Tube (EDTA Tube) .jpg"),
   "171": batchOne("GAUZE SWAB GREEN 100X100 (100_Pkt).jpg"),
   "174": publicImage("/imgs/image1.png"),   // 21. Gloves Vinyl Latex
-  "177": publicImage("/imgs/image2.png"),   // 22. Micropore Tape
   "179": publicImage("/imgs/image3.png"),   // 23. Sample Blood Collection Needles
   "183": publicImage("/imgs/image9.png"),   // 3. Serological (Pipette)
   "194": publicImage("/imgs/image11.png"),  // 5. Sleeve Protector

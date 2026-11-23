@@ -4100,27 +4100,6 @@
    "productSubcategoryName": "Blood Collection Tubes"
   },
   {
-   "id": 177,
-   "price": "Request Quote",
-   "galleryImages": [],
-   "name": "MICROPORE TAPE 12mm x 3m/ MIN (20 Rolls/Tray)",
-   "model": "B1-033",
-   "category": "medical-equipments",
-   "categoryName": "Medical Equipments",
-   "pdfCategory": "Surgical & Medical Disposables",
-   "sourcePdf": "LILMED.pdf",
-   "description": "MICROPORE TAPE 12mm x 3m/ MIN (20 Rolls/Tray) for securing dressings, tubing, packaging, or clinical materials depending on workflow requirements.",
-   "image": "blue-nitrile-disposable-surgical-gloves.jpg",
-   "imageFolder": "imgs",
-   "featured": false,
-   "minOrder": "1 pack",
-   "usedFor": "Healthcare, infection-control, first-aid, and clinical support workflows.",
-   "batch1Product": true,
-   "sourceCategory": "surgical",
-   "productSubcategory": "surgical-and-medical-disposables",
-   "productSubcategoryName": "Surgical & Medical Disposables"
-  },
-  {
    "id": 178,
    "price": "Request Quote",
    "galleryImages": [],

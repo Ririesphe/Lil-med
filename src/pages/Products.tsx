@@ -9,7 +9,7 @@ import {
 } from "../data/products";
 import { useCart } from "../context/CartContext";
 import { useLiveProducts } from "../hooks/useProducts";
-import { matchesSearch } from "../lib/search";
+import { buildSearchIndex, rankBySearch, searchTerms } from "../lib/search";
 
 const ALL = "All" as const;
 
@@ -74,23 +74,38 @@ export default function Products() {
     [products],
   );
 
+  // Pre-normalised search text per product (rebuilt only when the product list changes).
+  const searchIndex = useMemo(() => {
+    const SKIP_SPECS = new Set(["Availability", "Supply"]); // generic wording on most products
+    return new Map(
+      products.map((p) => [
+        p,
+        buildSearchIndex({
+          name: p.name,
+          identifiers: [p.sap, p.category, p.rawCategory, p.subcategory, p.specs?.["Product code"]],
+          details: [
+            p.description,
+            p.longDescription,
+            ...Object.entries(p.specs || {})
+              .filter(([k]) => !SKIP_SPECS.has(k))
+              .map(([, v]) => v),
+          ],
+        }),
+      ]),
+    );
+  }, [products]);
+
   const filtered = useMemo(() => {
     const list = products.filter((p) => {
       if (category !== ALL && p.category !== category) return false;
       if (rawCat !== "All" && p.rawCategory !== rawCat) return false;
       if (subCat !== "All" && p.rawCategory !== subCat) return false;
-      if (
-        !matchesSearch(query, [
-          p.name,
-          p.rawCategory,
-          p.sap,
-          p.category,
-          ...Object.values(p.specs || {}),
-        ])
-      )
-        return false;
       return true;
     });
+    // With a search, show matches ranked best-first.
+    if (searchTerms(query).length > 0) {
+      return rankBySearch(list, query, (p) => searchIndex.get(p)!);
+    }
     if (category !== "Blood Collection Tubes & Needles") return list;
     const rank = (p: Product) => {
       const sub = p.subcategory || p.rawCategory || "";
@@ -104,7 +119,7 @@ export default function Products() {
       .map((p, index) => ({ p, index }))
       .sort((a, b) => rank(a.p) - rank(b.p) || a.index - b.index)
       .map(({ p }) => p);
-  }, [products, category, rawCat, subCat, query]);
+  }, [products, searchIndex, category, rawCat, subCat, query]);
 
   function updateCategory(c: string) {
     setCategory(c);

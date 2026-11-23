@@ -5822,6 +5822,23 @@
    }
   },
   {
+   "id": 298,
+   "price": "Request Quote",
+   "galleryImages": [],
+   "name": "Plastic 24Hrs (Urine Container)",
+   "model": "",
+   "category": "laboratory-products",
+   "categoryName": "Laboratory Products",
+   "description": "Graduated plastic container for 24-hour urine collection, marked up to 2500 ml, with screw cap and carry handle.",
+   "image": "plastic-24hrs-urine-container.png",
+   "imageFolder": "product-photos",
+   "featured": false,
+   "minOrder": "1 unit",
+   "sourceCategory": "laboratory",
+   "productSubcategory": "laboratory-bottle-consumables",
+   "productSubcategoryName": "Laboratory Bottle Consumables"
+  },
+  {
    "id": 253,
    "name": "Delivery Unit",
    "model": "DE-002",

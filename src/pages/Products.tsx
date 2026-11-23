@@ -1,5 +1,5 @@
-import { useMemo, useState, useEffect } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useMemo, useState, useEffect, useRef } from "react";
+import { Link, useLocation, useNavigate, useNavigationType, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   categories as CATS,
@@ -29,10 +29,40 @@ export default function Products() {
   const [params, setParams] = useSearchParams();
   const initial = params.get("category");
   const [category, setCategory] = useState<string>(initial ?? ALL);
-  const [rawCat, setRawCat] = useState<string>("All");
   const [subCat, setSubCat] = useState<string>("All");
-  const [query, setQuery] = useState("");
-  const [visible, setVisible] = useState(48);
+  // Search text and product-type filter live in the address (?q=…&type=…) so
+  // they survive opening a product and coming Back, and a page refresh.
+  const query = params.get("q") ?? "";
+  const rawCat = params.get("type") || "All";
+  const location = useLocation();
+  const navType = useNavigationType();
+  const listKey = `lilmed:products-view:${location.search}`;
+  const saved = useRef<{ visible: number; scrollY: number } | null>(null);
+  if (saved.current === null) {
+    // When coming Back to this exact search, restore how far the visitor had got.
+    let s: { visible: number; scrollY: number } | null = null;
+    if (navType === "POP") {
+      try {
+        s = JSON.parse(sessionStorage.getItem(listKey) || "null");
+      } catch {
+        s = null;
+      }
+    }
+    saved.current = s || { visible: 48, scrollY: 0 };
+  }
+  const [visible, setVisible] = useState(saved.current.visible);
+
+  /** Update some address parameters, keeping the others; typing replaces the history entry. */
+  function writeParams(changes: Record<string, string | null>, replace = false) {
+    const next = new URLSearchParams(params);
+    for (const [k, v] of Object.entries(changes)) {
+      if (v === null || v === "" || v === "All") next.delete(k);
+      else next.set(k, v);
+    }
+    setParams(next, { replace });
+  }
+  const setQuery = (v: string) => writeParams({ q: v }, true);
+  const setRawCat = (v: string) => writeParams({ type: v }, true);
 
   useEffect(() => {
     const p = params.get("category");
@@ -40,9 +70,58 @@ export default function Products() {
     const s = params.get("sub");
     setSubCat(s || "All");
   }, [params]);
+
+  // A new search or filter starts from the top of the list (but not on the
+  // first render, which may be restoring a previous view).
+  const firstFilterRun = useRef(true);
   useEffect(() => {
+    if (firstFilterRun.current) {
+      firstFilterRun.current = false;
+      return;
+    }
     setVisible(48);
   }, [category, rawCat, subCat, query]);
+
+  // Remember position and "show more" count for this exact search while browsing.
+  const visibleRef = useRef(visible);
+  visibleRef.current = visible;
+  useEffect(() => {
+    const save = () => {
+      // The page lingers during the page-change animation: ignore the scroll to
+      // the top of the next page so the saved position is not overwritten.
+      if (window.location.pathname !== "/products") return;
+      try {
+        sessionStorage.setItem(listKey, JSON.stringify({ visible: visibleRef.current, scrollY: window.scrollY }));
+      } catch {
+        /* storage unavailable: nothing to restore later */
+      }
+    };
+    window.addEventListener("scroll", save, { passive: true });
+    return () => {
+      save();
+      window.removeEventListener("scroll", save);
+    };
+  }, [listKey]);
+
+  // Restore the scroll position after the page-change scroll-to-top has run.
+  useEffect(() => {
+    const y = saved.current?.scrollY || 0;
+    if (y <= 0) return;
+    // Keep trying for up to 2 seconds while the list renders, and stop as soon
+    // as the position is reached or the visitor scrolls themselves.
+    const started = Date.now();
+    let last = -1;
+    let timer = 0;
+    const restore = () => {
+      if (last >= 0 && Math.abs(window.scrollY - last) > 2) return; // visitor scrolled
+      window.scrollTo(0, y);
+      last = window.scrollY;
+      if (Math.abs(last - y) > 2 && Date.now() - started < 2000) timer = window.setTimeout(restore, 50);
+    };
+    timer = window.setTimeout(restore, 0);
+    return () => window.clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Prefer live DB products once seeded. Fallback to local catalog if DB empty.
   const products: Product[] = useMemo(() => {
@@ -126,14 +205,12 @@ export default function Products() {
   function updateCategory(c: string) {
     setCategory(c);
     setSubCat("All");
-    if (c === ALL) setParams({});
-    else setParams({ category: c });
+    writeParams({ category: c === ALL ? null : c, sub: null });
   }
 
   function updateSub(s: string) {
     setSubCat(s);
-    if (s === "All") setParams(category === ALL ? {} : { category });
-    else setParams({ category, sub: s });
+    writeParams({ category: category === ALL ? null : category, sub: s === "All" ? null : s });
   }
 
   return (
@@ -329,6 +406,7 @@ function ProductCard({ product }: { product: Product }) {
           </span>
           <Link
             to={`/product/${product.id}`}
+            state={{ fromProducts: true }}
             className="mt-2 flex-1 font-display text-sm leading-tight text-brand-navy line-clamp-3 transition hover:text-brand-teal"
           >
             {product.name}
@@ -356,6 +434,7 @@ function ProductCard({ product }: { product: Product }) {
           </div>
           <Link
             to={`/product/${product.id}`}
+            state={{ fromProducts: true }}
             className="mt-2 block text-center text-[11px] font-bold uppercase tracking-widest text-brand-teal transition hover:text-brand-navy"
           >
             View full details →
@@ -446,6 +525,7 @@ function ProductCard({ product }: { product: Product }) {
                 </div>
                 <Link
                   to={`/product/${product.id}`}
+            state={{ fromProducts: true }}
                   className="btn-shine btn-lift mt-3 block rounded-full bg-brand-navy px-4 py-2 text-center text-xs font-bold uppercase tracking-widest text-white"
                 >
                   View full product page

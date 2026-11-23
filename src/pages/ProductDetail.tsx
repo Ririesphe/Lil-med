@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ShieldCheck, Truck, PackageCheck } from "lucide-react";
 import {
@@ -16,6 +16,10 @@ import { choiceGroups, variantGroups, type VariantSelection } from "../lib/varia
 export default function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+  // Opened from the products list: Back returns to the same search and position.
+  const fromProducts = Boolean((location.state as { fromProducts?: boolean } | null)?.fromProducts);
+  const goBack = () => (fromProducts ? navigate(-1) : navigate("/products"));
   const { add } = useCart();
   const { items: dbItems } = useLiveProducts();
   const [added, setAdded] = useState(false);
@@ -99,7 +103,7 @@ export default function ProductDetail() {
       <section className="border-b border-black/5 bg-brand-cream/60">
         <div className="mx-auto max-w-7xl px-4 py-5 md:px-8">
           <button
-            onClick={() => navigate(-1)}
+            onClick={goBack}
             className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-navy/70 transition hover:text-brand-teal"
           >
             <ArrowLeft size={14} /> Back

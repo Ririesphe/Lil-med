@@ -5995,21 +5995,24 @@
   },
   {
    "id": 259,
-   "name": "Non-Woven Gauze Non-Sterile 100 x 100mm",
+   "name": "Gauze Swabs",
    "model": "LM-B2-259",
    "category": "medical-equipments",
    "categoryName": "Medical Equipments",
    "price": "Request Quote",
    "description": "Highly absorbent, lint-free synthetic non-woven swabs measuring 100 mm x 100 mm, available in 4-ply or 8-ply. Soft, breathable and gentle on sensitive skin.",
-   "image": "non-woven-gauze-100x100.jpg",
+   "image": "gauze-swabs.png",
    "featured": false,
-   "imageFolder": "batch2",
+   "imageFolder": "product-photos",
    "galleryImages": [],
    "sourceCategory": "medical-equipments",
    "productSubcategory": "surgical-medical-disposables",
    "productSubcategoryName": "Surgical & Medical Disposables",
    "usedFor": "General wound cleaning, antiseptic application, fluid absorption and skin preparation.",
-   "minOrder": "1 unit"
+   "minOrder": "1 unit",
+   "specifications": {
+    "Sizes": "GAUZE SWABS, 75X75X8 PLY, N/STERILE 100/Box\nGAUZE SWABS STERILE 10cm x 10cm 8 Ply (Pack/5)\nGAUZE GEM NON WOVEN SWAB 100/Box\nGAUZE SWAB 50X50X8PLY NON STERILE (100 PKT)\nGAUZE SWAB GREEN 100X100 (100/Pkt)"
+   }
   },
   {
    "id": 260,

@@ -52,8 +52,6 @@ export const productImageOverrides: Record<string, string> = {
   "125": publicImage("/imgs/image19.png"),  // 10. Cell Spreaders
   "128": publicImage("/imgs/image18.png"),  // 12. Culture Tubes with Dual-position Cap
   "130": publicImage("/imgs/image17.png"),  // 11. Bacteriological Petri Dishes
-  "140": publicImage("/imgs/image15.png"),  // 13. Plain Microscope Slides (same pic in Word doc)
-  "142": publicImage("/imgs/image15.png"),  // 14. PapSmear Microscope Slides (same pic in Word doc)
   "141": publicImage("/generated/pcl-microscope-slides.jpg"),
   "144": publicImage("/imgs/image20.png"),  // 15. Counting Chamber Slides
   "145": publicImage("/products/Latex Glass Slides.jpg"),

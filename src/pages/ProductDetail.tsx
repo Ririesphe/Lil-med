@@ -148,6 +148,12 @@ export default function ProductDetail() {
                 {product.description}
               </p>
             )}
+            {product.specs?.Sizes && (
+              <div className="mt-4 text-base text-brand-navy">
+                <div className="font-semibold">Sizes:</div>
+                <div className="mt-1 text-brand-charcoal/80">{product.specs.Sizes}</div>
+              </div>
+            )}
 
             <div className="mt-6 flex flex-wrap items-center gap-4">
               <div className="text-2xl font-bold text-brand-navy">

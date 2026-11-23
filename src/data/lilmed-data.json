@@ -3593,13 +3593,13 @@
    "id": 151,
    "price": "Request Quote",
    "galleryImages": [],
-   "name": "adhesive Tape 2.5cm x 10cm",
+   "name": "Adhesive Tapes",
    "model": "B1-006",
    "category": "medical-equipments",
    "categoryName": "Medical Equipments",
    "pdfCategory": "Surgical & Medical Disposables",
    "sourcePdf": "LILMED.pdf",
-   "description": "adhesive Tape 2.5cm x 10cm for securing dressings, tubing, packaging, or clinical materials depending on workflow requirements.",
+   "description": "Adhesive Tapes for securing dressings, tubing, packaging, or clinical materials depending on workflow requirements.",
    "image": "blue-nitrile-disposable-surgical-gloves.jpg",
    "imageFolder": "imgs",
    "featured": false,
@@ -3608,7 +3608,10 @@
    "batch1Product": true,
    "sourceCategory": "surgical",
    "productSubcategory": "surgical-and-medical-disposables",
-   "productSubcategoryName": "Surgical & Medical Disposables"
+   "productSubcategoryName": "Surgical & Medical Disposables",
+   "specifications": {
+    "Sizes": "MICROPORE TAPE 12mm x 10m/MIN (20 Rolls/Tray)\nMICROPORE TAPE 12mm x 3m/ MIN (20 Rolls/Tray)\nMICROPORE 24MM x 3M MIN 10/TRAY\nTRANSPORE DRESSING TAPE (12MMX5M) 20 Rolls/Tray\nTRANSPORE CLEAR AID TAPE 25mm X 5m (12 Rolls/Tray)"
+   }
   },
   {
    "id": 152,

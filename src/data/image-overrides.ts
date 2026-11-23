@@ -56,7 +56,7 @@ export const productImageOverrides: Record<string, string> = {
   "144": publicImage("/imgs/image20.png"),  // 15. Counting Chamber Slides
   "145": publicImage("/products/Latex Glass Slides.jpg"),
   "149": publicImage("/imgs/image10.png"),  // 2. 3M FACE MASK 1860 N95 PARTICULATE RESPIRATOR
-  "151": publicImage("/imgs/image21.png"),  // 16. adhesive Tape 2.5cm x 10cm
+  "151": publicImage("/imgs/image21.png"),  // 16. Adhesive Tapes (was adhesive Tape 2.5cm x 10cm)
   "153": publicImage("/imgs/image22.png"),  // 17. Blood Collection Tube Holder
   "161": publicImage("/imgs/image23.png"),  // 18. Cytology Brushes
   "164": batchOne("Disposable Pap Smear Kit.png"),

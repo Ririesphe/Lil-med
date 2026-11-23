@@ -3040,7 +3040,7 @@
   {
    "id": 124,
    "price": "Request Quote",
-   "image": "Cell Culture Cover Glass .jpg",
+   "image": "cell-culture-cover-glass.png",
    "featured": false,
    "minOrder": "1 pack",
    "subcategory": "microbiology-products",
@@ -3053,14 +3053,17 @@
    "pdfCategory": "Microbiology Products",
    "sourcePdf": "Lilmed Citotest Microbiology Products (1).pdf",
    "description": "Borosilicate 3.3 cell culture cover glass with TC treatment for IHC, confocal experiments, cell culture and fluorescence microscopy. Pre-clean, pre-autoclaved, RNase/DNase/pyrogen free, non-cytotoxic and solvent-resistant.",
-   "imageFolder": "products",
+   "imageFolder": "product-photos",
    "galleryImages": [],
    "sourceCategory": "laboratory",
    "productSubcategory": "laboratory-plastic-consumables",
    "productSubcategoryName": "Laboratory Plastic Consumables",
    "importedImage": true,
    "productFolderImage": true,
-   "noExactImage": false
+   "noExactImage": false,
+   "specifications": {
+    "Sizes": "GLASS SLIDES FROSTED CUT ENDS BX 50\nGLASS SLIDES FROSTED BEVELLED BX 50\nECO Glas Microscope Cover Glass\nEstaGlas Microscope Cover Glass\nPlain Microscope Slides\nPapsmear Microscope Slides"
+   }
   },
   {
    "id": 125,

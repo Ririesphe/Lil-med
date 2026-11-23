@@ -4052,7 +4052,10 @@
    "batch1Product": true,
    "sourceCategory": "surgical",
    "productSubcategory": "surgical-and-medical-disposables",
-   "productSubcategoryName": "Surgical & Medical Disposables"
+   "productSubcategoryName": "Surgical & Medical Disposables",
+   "specifications": {
+    "Sizes": "GLOVES VINYL LATEX FREE LARGE 100/Box\nGLOVES, LATEX-FREE, NON-STERILE: SMALL VINYL GLOVES:SMALL (100/BOX)\nGLOVES,LATEX-FREE, NON-STERILE: MEDIUM VINYL GLOVES: MEDIUM (100/BOX)"
+   }
   },
   {
    "id": 175,

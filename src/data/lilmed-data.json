@@ -4139,7 +4139,10 @@
    "batch1Product": true,
    "sourceCategory": "laboratory",
    "productSubcategory": "blood-collection-needles",
-   "productSubcategoryName": "Blood Collection Needles"
+   "productSubcategoryName": "Blood Collection Needles",
+   "specifications": {
+    "Sizes": "22G BLACK NEEDLE BX 100\n21G GREEN NEEDLE BX 100"
+   }
   },
   {
    "id": 180,

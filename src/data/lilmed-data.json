@@ -3584,13 +3584,13 @@
    "id": 146,
    "price": "Request Quote",
    "galleryImages": [],
-   "name": "12*75mm Test Tube, 5ml PP/PS",
+   "name": "12*75mm Test Tube",
    "model": "B1-001",
    "category": "laboratory-products",
    "categoryName": "Laboratory Products",
    "pdfCategory": "Laboratory Consumables",
    "sourcePdf": "LILMED.pdf",
-   "description": "12*75mm Test Tube, 5ml PP/PS for sample collection, handling, mixing, storage, and routine laboratory testing. Suitable for laboratory specimen preparation and transfer workflows.",
+   "description": "12*75mm Test Tube for sample collection, handling, mixing, storage, and routine laboratory testing. Suitable for laboratory specimen preparation and transfer workflows.",
    "image": "laboratory-pipette-sample-tube-consumables.jpg",
    "imageFolder": "imgs",
    "featured": false,
@@ -3599,7 +3599,10 @@
    "batch1Product": true,
    "sourceCategory": "laboratory",
    "productSubcategory": "laboratory-plastic-consumables",
-   "productSubcategoryName": "Laboratory Plastic Consumables"
+   "productSubcategoryName": "Laboratory Plastic Consumables",
+   "specifications": {
+    "Sizes": "TUBE TEST L/WALL -RIM 10X75MM BX 1000"
+   }
   },
   {
    "id": 147,

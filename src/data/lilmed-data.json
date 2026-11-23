@@ -4703,13 +4703,13 @@
    "id": 200,
    "price": "Request Quote",
    "galleryImages": [],
-   "name": "Surgi Plus Luer Slip 3 Part Syringe",
+   "name": "Syringes",
    "model": "B1-056",
    "category": "medical-equipments",
    "categoryName": "Medical Equipments",
    "pdfCategory": "Hypodermic Products",
    "sourcePdf": "LILMED.pdf",
-   "description": "Surgi Plus Luer Slip 3 Part Syringe for clinical fluid administration, transfer, and procedural healthcare workflows.",
+   "description": "Syringes for clinical fluid administration, transfer, and procedural healthcare workflows.",
    "image": "medical-hypodermic-syringes-needles.jpg",
    "imageFolder": "imgs",
    "featured": false,
@@ -4718,7 +4718,10 @@
    "batch1Product": true,
    "sourceCategory": "hypodermic",
    "productSubcategory": "hypodermic-products",
-   "productSubcategoryName": "Hypodermic Products"
+   "productSubcategoryName": "Hypodermic Products",
+   "specifications": {
+    "Sizes": "SYRINGE + LUER SLIP NAKED 5ML PK 100\nSYRINGE 10ml 100/BOX\nSYRINGE DISPOSABLE 10ML LUERLOCK 100/Box\n20ml CODAN SYRINGE 50/Box\nVulco Syringe 10ml Luer Slip Box 100\nSYRINGE DISP. 2ML LUER SLIP (100/Box)\nSYRINGE DISPOSABLE 5ML LUER SLIP (100/Box)"
+   }
   },
   {
    "id": 201,

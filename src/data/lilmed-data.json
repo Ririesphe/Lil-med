@@ -6124,24 +6124,6 @@
    "minOrder": "1 unit"
   },
   {
-   "id": 268,
-   "name": "Venous Blood Collection Needles 21G",
-   "model": "LM-B2-268",
-   "category": "blood-collection-tubes-needles",
-   "categoryName": "Blood Collection Tubes & Needles",
-   "price": "Request Quote",
-   "description": "Standard multi-sample venous blood collection needle with an ultra-sharp, silicone-coated bevel and rubber sleeve on the tube end to prevent leakage during tube changes. Outer diameter 0.8 mm, lengths 25-38 mm, green colour-coded hub. Threads into standard single-use tube holders.",
-   "image": "venous-blood-collection-needle-21g.jpg",
-   "featured": false,
-   "imageFolder": "batch2",
-   "galleryImages": [],
-   "sourceCategory": "blood-collection-tubes-needles",
-   "productSubcategory": "blood-collection-needles",
-   "productSubcategoryName": "Blood Collection Needles",
-   "usedFor": "Routine phlebotomy and multi-tube draws.",
-   "minOrder": "1 unit"
-  },
-  {
    "id": 269,
    "name": "PE (Polyethylene) Bandages",
    "model": "LM-B2-269",
@@ -13579,25 +13561,6 @@
     "Pack": "100 per box"
    },
    "image": "/blood-collection/needles/Hypodermic_Needles_Pink_Box_18G_Label.jpg?v=r"
-  },
-  {
-   "id": "BC-N09",
-   "name": "Disposable Sterile Venous Blood Specimen Collection Needle 100pcs",
-   "model": "BC-N09",
-   "category": "blood-collection-tubes-needles",
-   "categoryName": "Blood Collection Tubes & Needles",
-   "productSubcategory": "blood-collection-needles",
-   "productSubcategoryName": "Blood Collection Needles",
-   "price": "Request Quote",
-   "minOrder": "100/box",
-   "description": "Sterile venous blood specimen collection needle, 100 per box. Gauge and length are not printed on the face of the carton.",
-   "longDescription": "Multi-sample blood collection needle in a blue and white carton. The visible label says disposable sterile venous blood specimen collection needle, 100 pieces. Gauge is not assigned because it is not readable on this photo.",
-   "specifications": {
-    "Type": "Venous blood specimen collection needle",
-    "Pack": "100 per box",
-    "Sterility": "Sterile EO"
-   },
-   "image": "/blood-collection/needles/Sterile_Blood_Collection_Needles_Blue_Box.jpg?v=r"
   }
  ],
  "categories": [

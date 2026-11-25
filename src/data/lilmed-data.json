@@ -6358,24 +6358,6 @@
    "minOrder": "1 unit"
   },
   {
-   "id": 282,
-   "name": "Test Tubes Soda Glass (12 x 75mm)",
-   "model": "LM-B2-282",
-   "category": "laboratory-products",
-   "categoryName": "Laboratory Products",
-   "price": "Request Quote",
-   "description": "Cylindrical round-bottom soda-lime glass tubes, 12 mm diameter x 75 mm length, approx. 5-6 mL capacity with 0.6-1.0 mm wall thickness and a rimless straight edge.",
-   "image": "test-tubes-soda-glass-12x75.jpg",
-   "featured": false,
-   "imageFolder": "batch2",
-   "galleryImages": [],
-   "sourceCategory": "laboratory-products",
-   "productSubcategory": "laboratory-bottle-consumables",
-   "productSubcategoryName": "Laboratory Bottle Consumables",
-   "usedFor": "General mixing, biological cultures and moderate warming in water baths.",
-   "minOrder": "1 unit"
-  },
-  {
    "id": 283,
    "name": "Surgical Blade Size 24 (100/Box)",
    "model": "LM-B2-283",

@@ -69,7 +69,7 @@ export const productImageOverrides: Record<string, string> = {
   "200": publicImage("/imgs/image14.png"),  // 6. Syringes (Surgi Plus Luer Slip)
   "203": batchOne("Test Tube 12_75mm, PP .jpg"),
   "206": publicImage("/imgs/image13.png"),  // 7. 16×75mm Test Tube
-  "218": batchOne("Urine container 60 ml, 90 ml, 100 ml, 120 ml.jpg"),
+  "218": publicImage("/product-photos/urine-container.png"), // same photo as Urine Container (LC-011)
   "221": publicImage("/imgs/image7.png"),   // 27. ESR Pipette Adaptor
 
   // ──── Remaining existing overrides (non-Word-doc products) ────

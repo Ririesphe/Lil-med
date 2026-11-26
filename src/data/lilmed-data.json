@@ -5867,24 +5867,6 @@
    "productSubcategoryName": "Blood Collection Needles"
   },
   {
-   "id": 257,
-   "name": "Transparent PE Tape 2.5cm x 5m",
-   "model": "LM-B2-257",
-   "category": "medical-equipments",
-   "categoryName": "Medical Equipments",
-   "price": "Request Quote",
-   "description": "Breathable, water-resistant surgical tape (2.5 cm x 5 m) with a micro-perforated clear polyethylene backing and hypoallergenic medical-grade acrylic adhesive. The transparent film lets clinicians monitor puncture sites and wounds without removing the tape, and the perforations allow easy bi-directional hand tearing with minimal residue on removal.",
-   "image": "transparent-pe-tape.jpg",
-   "featured": false,
-   "imageFolder": "batch2",
-   "galleryImages": [],
-   "sourceCategory": "medical-equipments",
-   "productSubcategory": "surgical-medical-disposables",
-   "productSubcategoryName": "Surgical & Medical Disposables",
-   "usedFor": "Securing IV lines, tubing and dressings.",
-   "minOrder": "1 unit"
-  },
-  {
    "id": 258,
    "name": "Sterile Hypodermic Needles 23G",
    "model": "LM-B2-258",

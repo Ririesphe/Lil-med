@@ -3566,7 +3566,10 @@
    "batch1Product": true,
    "sourceCategory": "surgical",
    "productSubcategory": "surgical-and-medical-disposables",
-   "productSubcategoryName": "Surgical & Medical Disposables"
+   "productSubcategoryName": "Surgical & Medical Disposables",
+   "specifications": {
+    "Sizes": "Regular\nSmall"
+   }
   },
   {
    "id": 150,

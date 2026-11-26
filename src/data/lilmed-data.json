@@ -3971,27 +3971,6 @@
    "productSubcategoryName": "Surgical & Medical Disposables"
   },
   {
-   "id": 171,
-   "price": "Request Quote",
-   "galleryImages": [],
-   "name": "GAUZE SWAB GREEN 100X100 (100/Pkt)",
-   "model": "B1-026",
-   "category": "medical-equipments",
-   "categoryName": "Medical Equipments",
-   "pdfCategory": "Surgical & Medical Disposables",
-   "sourcePdf": "LILMED.pdf",
-   "description": "GAUZE SWAB GREEN 100X100 (100/Pkt) for specimen collection, transport, and microbiology sampling workflows.",
-   "image": "blue-nitrile-disposable-surgical-gloves.jpg",
-   "imageFolder": "imgs",
-   "featured": false,
-   "minOrder": "1 pack",
-   "usedFor": "Healthcare, infection-control, first-aid, and clinical support workflows.",
-   "batch1Product": true,
-   "sourceCategory": "surgical",
-   "productSubcategory": "surgical-and-medical-disposables",
-   "productSubcategoryName": "Surgical & Medical Disposables"
-  },
-  {
    "id": 173,
    "price": "Request Quote",
    "galleryImages": [],

@@ -5722,49 +5722,6 @@
    "productSubcategoryName": "Laboratory Bottle Consumables"
   },
   {
-   "id": 252,
-   "name": "Urine Container",
-   "model": "LC-011",
-   "category": "laboratory-products",
-   "categoryName": "Laboratory Products",
-   "price": "Request Quote",
-   "description": "Urine Container: Laboratory consumables supplied by LilMed for sample collection, preparation, storage, and testing workflows.",
-   "image": "H1015.jpg",
-   "imageFolder": "drive-download-20260630T094004Z-3-001/urine container",
-   "galleryImages": [
-    {
-     "file": "H1016-2-1.jpg",
-     "folder": "drive-download-20260630T094004Z-3-001/urine container"
-    },
-    {
-     "file": "K1017-1.jpg",
-     "folder": "drive-download-20260630T094004Z-3-001/urine container"
-    },
-    {
-     "file": "H1014.jpg",
-     "folder": "drive-download-20260630T094004Z-3-001/urine container"
-    },
-    {
-     "file": "K1021.jpg",
-     "folder": "drive-download-20260630T094004Z-3-001/urine container"
-    },
-    {
-     "file": "K1025.jpg",
-     "folder": "drive-download-20260630T094004Z-3-001/urine container"
-    }
-   ],
-   "featured": false,
-   "localFolderProduct": true,
-   "usedFor": "Routine sample collection, preparation, handling, storage, and laboratory testing.",
-   "minOrder": "1 unit",
-   "sourceCategory": "laboratory",
-   "productSubcategory": "laboratory-bottle-consumables",
-   "productSubcategoryName": "Laboratory Bottle Consumables",
-   "specifications": {
-    "Sizes": "SPECIMEN CONTAINERS(40ML PPT)- 500/BOX\nCLIPLOCK CONTAINER 45ml p/p (LAMINAR FLOW) WITH NHLS LABEL - STK-S (UNIT 800)"
-   }
-  },
-  {
    "id": 298,
    "price": "Request Quote",
    "galleryImages": [],

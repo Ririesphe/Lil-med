@@ -4850,7 +4850,10 @@
    "batch1Product": true,
    "sourceCategory": "laboratory",
    "productSubcategory": "laboratory-plastic-consumables",
-   "productSubcategoryName": "Laboratory Plastic Consumables"
+   "productSubcategoryName": "Laboratory Plastic Consumables",
+   "specifications": {
+    "Sizes": "SPECIMEN CONTAINERS(40ML PPT)- 500/BOX\nCLIPLOCK CONTAINER 45ml p/p (LAMINAR FLOW) WITH NHLS LABEL - STK-S (UNIT 800)"
+   }
   },
   {
    "id": 219,

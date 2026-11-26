@@ -19,24 +19,6 @@
    "minOrder": "1 unit"
   },
   {
-   "id": 2,
-   "name": "Pipette Tips - Filtered",
-   "model": "PT-002",
-   "category": "laboratory-products",
-   "categoryName": "Laboratory Products",
-   "price": "Request Quote",
-   "description": "Filtered pipette tips for accurate liquid handling in laboratory environments.",
-   "image": "laboratory-pipette-tips-consumables-racks.jpg",
-   "featured": true,
-   "imageFolder": "imgs",
-   "galleryImages": [],
-   "sourceCategory": "laboratory",
-   "productSubcategory": "laboratory-plastic-consumables",
-   "productSubcategoryName": "Laboratory Plastic Consumables",
-   "usedFor": "Routine sample preparation, handling, and laboratory testing workflows.",
-   "minOrder": "1 unit"
-  },
-  {
    "id": 3,
    "name": "Laboratory Bottles - Glass",
    "model": "LB-003",

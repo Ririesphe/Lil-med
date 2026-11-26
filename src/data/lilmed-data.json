@@ -5848,25 +5848,6 @@
    "productFolderImage": true
   },
   {
-   "id": 256,
-   "name": "Disposable Blood Collection Needles",
-   "model": "BCN-001",
-   "category": "blood-collection-tubes-needles",
-   "categoryName": "Blood Collection Tubes & Needles",
-   "price": "Request Quote",
-   "description": "Gongdong disposable blood collection needles for vacuum blood collection workflows.",
-   "image": "",
-   "imageFolder": "drive-download-20260630T094004Z-3-001/disposable vacuum blood collection tube",
-   "galleryImages": [],
-   "featured": false,
-   "localFolderProduct": true,
-   "sourceCategory": "laboratory",
-   "usedFor": "Blood specimen collection with compatible vacuum blood collection tubes.",
-   "minOrder": "1 pack",
-   "productSubcategory": "blood-collection-needles",
-   "productSubcategoryName": "Blood Collection Needles"
-  },
-  {
    "id": 258,
    "name": "Sterile Hypodermic Needles 23G",
    "model": "LM-B2-258",
